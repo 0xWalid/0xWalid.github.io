@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | WALEED_SEC</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+
+    <!-- 3D ENGINE LAYERS -->
+    <div id="canvas-container"></div>
+    <div class="overlay-texture"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="brand">WALEED_SEC</div>
+        <div class="nav-links">
+            <a href="{{ '/' | relative_url }}#work" class="nav-link">Ops</a>
+            <a href="{{ '/' | relative_url }}#intel" class="nav-link">Intel</a>
+            <a href="{{ '/' | relative_url }}#comms" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT INJECTOR -->
+    <div class="wrapper">
+        {{ content }}
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Main Logic -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
