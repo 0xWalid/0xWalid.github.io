@@ -1,1 +1,8 @@
-
+title: Waleed
+email: bu8.official@gmail.com
+description: Junior Penetration Tester Portfolio & Writeups
+baseurl: ""
+url: "https://0xWalid.github.io"
+markdown: kramdown
+permalink: /:title/
+highlighter: rouge
