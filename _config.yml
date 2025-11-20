@@ -1,14 +1,27 @@
-title: Waleed Ahmed Butt
-email: bu8.official@gmail.com
-description: Junior Penetration Tester Portfolio & Writeups
-baseurl: ""
-url: "https://0xWalid.github.io"
-markdown: kramdown
-permalink: /:title/
-highlighter: rouge
-
-# --- Social & Contact Details ---
-github_username: 0xWalid
+title: "0xWalid | Offensive Security Specialist"
+email: contact@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Digital Dossier of a Junior Penetration Tester & Security Researcher.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: 
+github_username:  0xWalid
 linkedin_username: thewaleedahmed
-# Place your PDF in the 'assets' folder and name it 'resume.pdf'
-resume_file: /assets/resume.pdf
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Custom Variables
+google_fonts:
+  - "Space+Grotesk:wght@300;400;500;600;700"
+  - "JetBrains+Mono:wght@400;700"
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
