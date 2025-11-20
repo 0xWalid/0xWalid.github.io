@@ -1,0 +1,27 @@
+---
+layout: default
+title: Projects | 0xWalid
+---
+
+<section class="content-section">
+    <h2 class="section-title">PROJECT ARCHIVES</h2>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">ALL</button>
+        <button class="filter-btn" data-filter="python">PYTHON</button>
+        <button class="filter-btn" data-filter="tools">TOOLS</button>
+        <button class="filter-btn" data-filter="red-team">RED TEAM</button>
+        <button class="filter-btn" data-filter="active-directory">AD</button>
+    </div>
+
+    <div class="grid-container">
+        {% for project in site.data.projects %}
+        <div class="card post-item" data-tags="{{ project.tags | join: ' ' }}">
+            <h3 class="card-title">{{ project.title }}</h3>
+            <p class="post-meta">TAGS: {{ project.tags | join: ', ' | upcase }}</p>
+            <p class="card-desc">{{ project.description }}</p>
+            <a href="{{ project.url }}" class="btn">ACCESS CODE</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>

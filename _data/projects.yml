@@ -1,0 +1,14 @@
+- title: Hyper Scanner
+  description: Multi-threaded network vulnerability scanner written in Python. Detects open ports and common CVEs.
+  url: https://github.com/0xWalid/hyper-scanner
+  tags: [python, tools, scanner]
+
+- title: Payload Generator
+  description: Automated payload generation tool for various architectures. Focus on evasion techniques.
+  url: https://github.com/0xWalid/payload-gen
+  tags: [red-team, malware, automation]
+
+- title: AD Lab Automator
+  description: PowerShell scripts to spin up a vulnerable Active Directory environment for testing.
+  url: https://github.com/0xWalid/ad-lab
+  tags: [powershell, active-directory, lab]

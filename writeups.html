@@ -1,14 +1,28 @@
-<button class="filter-btn" data-filter="ctf">CTF</button>
-</div>
+```
+---
+layout: default
+title: Writeups | 0xWalid
+---
 
-<div class="grid-container">
-    {% for post in site.posts %}
-    <div class="card post-item" data-tags="{{ post.tags | join: ' ' }}">
-        <h3 class="card-title">{{ post.title }}</h3>
-        <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }} | TAGS: {{ post.tags | join: ', ' | upcase }}</p>
-        <p class="card-desc">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-        <a href="{{ post.url | relative_url }}" class="btn">READ INTEL</a>
+<section class="content-section">
+    <h2 class="section-title">INTEL ARCHIVES</h2>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">ALL</button>
+        <button class="filter-btn" data-filter="ctf">CTF</button>
+        <button class="filter-btn" data-filter="research">RESEARCH</button>
+        <button class="filter-btn" data-filter="tutorial">TUTORIAL</button>
     </div>
-    {% endfor %}
-</div>
+
+    <div class="grid-container">
+        {% for post in site.posts %}
+        <div class="card post-item" data-tags="{{ post.tags | join: ' ' }}">
+            <h3 class="card-title">{{ post.title }}</h3>
+            <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }} | TAGS: {{ post.tags | join: ', ' | upcase }}</p>
+            <p class="card-desc">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            <a href="{{ post.url | relative_url }}" class="btn">READ INTEL</a>
+        </div>
+        {% endfor %}
+    </div>
 </section>
+```

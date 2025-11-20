@@ -7,77 +7,54 @@ title: 0xWalid | Offensive Security Specialist
     <h1 class="hero-title">OFFENSIVE <br> <span class="glitch-text" data-text="SECURITY">SECURITY</span> <br> SPECIALIST
     </h1>
     <p class="hero-subtitle">>> JUNIOR PENETRATION TESTER & SECURITY RESEARCHER</p>
-    ---
-    layout: default
-    title: 0xWalid | Offensive Security Specialist
-    ---
+    <div class="hero-buttons">
+        <a href="#contact" class="btn">Initialize Uplink</a>
+        <a href="#" class="btn">Download Dossier</a>
+    </div>
+</section>
 
-    <section id="hero" class="hero-section">
-        <h1 class="hero-title">OFFENSIVE <br> <span class="glitch-text" data-text="SECURITY">SECURITY</span> <br>
-            SPECIALIST
-        </h1>
-        <p class="hero-subtitle">>> JUNIOR PENETRATION TESTER & SECURITY RESEARCHER</p>
-        <div class="hero-buttons">
-            <a href="#contact" class="btn">Initialize Uplink</a>
-            <a href="#" class="btn">Download Dossier</a>
+<section id="ops" class="content-section">
+    <h2 class="section-title">PROJECTS</h2>
+    <div class="grid-container">
+        {% for project in site.data.projects limit:3 %}
+        <div class="card">
+            <h3 class="card-title">{{ project.title }}</h3>
+            <p class="card-desc">{{ project.description }}</p>
+            <a href="{{ project.url }}" class="btn">ACCESS CODE</a>
         </div>
-    </section>
+        {% endfor %}
+    </div>
+    <div style="margin-top: 3rem; text-align: center;">
+        <a href="{{ '/projects.html' | relative_url }}" class="btn">VIEW ALL ARCHIVES</a>
+    </div>
+</section>
 
-    <section id="ops" class="content-section">
-        <h2 class="section-title">PROJECTS</h2>
-        <div class="grid-container">
-            <!-- Project 1 -->
-            <div class="card">
-                <h3 class="card-title">Hyper Scanner</h3>
-                <p class="card-desc">Multi-threaded network vulnerability scanner written in Python. Detects open ports
-                    and
-                    common CVEs.</p>
-                <a href="https://github.com/0xWalid/hyper-scanner" class="btn">ACCESS CODE</a>
-            </div>
-            <!-- Project 2 -->
-            <div class="card">
-                <h3 class="card-title">Payload Generator</h3>
-                <p class="card-desc">Automated payload generation tool for various architectures. Focus on evasion
-                    techniques.</p>
-                <a href="https://github.com/0xWalid/payload-gen" class="btn">ACCESS CODE</a>
-            </div>
-            <!-- Project 3 -->
-            <div class="card">
-                <h3 class="card-title">AD Lab Automator</h3>
-                <p class="card-desc">PowerShell scripts to spin up a vulnerable Active Directory environment for
-                    testing.
-                </p>
-                <a href="https://github.com/0xWalid/ad-lab" class="btn">ACCESS CODE</a>
-            </div>
+<section id="intel" class="content-section">
+    <h2 class="section-title">WRITEUPS</h2>
+    <div class="grid-container">
+        {% for post in site.posts limit:3 %}
+        <div class="card">
+            <h3 class="card-title">{{ post.title }}</h3>
+            <p class="card-desc">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            <a href="{{ post.url | relative_url }}" class="btn">READ INTEL</a>
         </div>
-    </section>
+        {% endfor %}
+    </div>
+    <div style="margin-top: 3rem; text-align: center;">
+        <a href="{{ '/writeups.html' | relative_url }}" class="btn">VIEW ALL ARCHIVES</a>
+    </div>
+</section>
 
-    <section id="intel" class="content-section">
-        <h2 class="section-title">WRITEUPS</h2>
-        <div class="grid-container">
-            {% for post in site.posts limit:3 %}
-            <div class="card">
-                <h3 class="card-title">{{ post.title }}</h3>
-                <p class="card-desc">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-                <a href="{{ post.url | relative_url }}" class="btn">READ INTEL</a>
-            </div>
-            {% endfor %}
-        </div>
-        <div style="margin-top: 3rem; text-align: center;">
-            <a href="{{ '/writeups.html' | relative_url }}" class="btn">VIEW ALL ARCHIVES</a>
-        </div>
-    </section>
-
-    <section id="contact" class="content-section">
-        <h2 class="section-title">CONTACT</h2>
-        <div class="card" style="max-width: 600px;">
-            <p style="margin-bottom: 1.5rem;">Ready to initiate collaboration? Secure channels are open.</p>
-            <p style="margin-bottom: 0.5rem;"><strong>EMAIL:</strong> <a href="mailto:{{ site.email }}">{{ site.email
-                    }}</a></p>
-            <p style="margin-bottom: 0.5rem;"><strong>GITHUB:</strong> <a
-                    href="https://github.com/{{ site.github_username }}">@{{ site.github_username }}</a></p>
-            <p style="margin-bottom: 1.5rem;"><strong>LINKEDIN:</strong> <a
-                    href="https://linkedin.com/in/{{ site.linkedin_username }}">@{{ site.linkedin_username }}</a></p>
-            <a href="mailto:{{ site.email }}" class="btn">SEND MESSAGE</a>
-        </div>
-    </section>
+<section id="contact" class="content-section">
+    <h2 class="section-title">CONTACT</h2>
+    <div class="card" style="max-width: 600px; margin: 0 auto;">
+        <p style="margin-bottom: 1.5rem;">Ready to initiate collaboration? Secure channels are open.</p>
+        <p style="margin-bottom: 0.5rem;"><strong>EMAIL:</strong> <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        </p>
+        <p style="margin-bottom: 0.5rem;"><strong>GITHUB:</strong> <a
+                href="https://github.com/{{ site.github_username }}">@{{ site.github_username }}</a></p>
+        <p style="margin-bottom: 1.5rem;"><strong>LINKEDIN:</strong> <a
+                href="https://linkedin.com/in/{{ site.linkedin_username }}">@{{ site.linkedin_username }}</a></p>
+        <a href="mailto:{{ site.email }}" class="btn">SEND MESSAGE</a>
+    </div>
+</section>

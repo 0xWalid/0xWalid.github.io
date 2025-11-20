@@ -14,7 +14,7 @@ function initScrollAnimations() {
         gsap.from(section.children, {
             scrollTrigger: {
                 trigger: section,
-                start: 'top 80%',
+                start: 'top 90%',
                 toggleActions: 'play none none reverse'
             },
             y: 50,
