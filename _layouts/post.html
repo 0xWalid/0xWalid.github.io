@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | WALEED_SEC</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 150px auto;
+            padding: 0 20px;
+        }
+        
+        .post-meta {
+            font-family: var(--f-code);
+            color: var(--accent);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .post-content {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        /* Headings in posts */
+        .post-content h2 { font-family: var(--f-head); color: #fff; margin-top: 50px; margin-bottom: 20px; font-size: 2rem; }
+        .post-content h3 { font-family: var(--f-code); color: var(--accent); margin-top: 30px; margin-bottom: 15px; }
+        
+        /* Code Blocks */
+        pre {
+            background: #0a0a0a;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            padding: 20px;
+            overflow-x: auto;
+            margin: 30px 0;
+            border-radius: 0; /* Sharp corners */
+        }
+        code { font-family: var(--f-code); color: var(--accent); font-size: 0.85rem; }
+        p code { background: rgba(0, 255, 65, 0.1); padding: 2px 6px; }
+        
+        /* Images */
+        img { max-width: 100%; border: 1px solid rgba(255,255,255,0.1); margin: 30px 0; }
+    </style>
+</head>
+<body>
+
+    <!-- Simplified Nav -->
+    <nav>
+        <div class="brand"><a href="{{ '/' | relative_url }}" style="color:inherit; text-decoration:none;">WALEED_SEC</a></div>
+        <div class="nav-links">
+            <a href="{{ '/' | relative_url }}#intel" class="nav-link">< Return to Intel</a>
+        </div>
+    </nav>
+    
+    <div class="post-container">
+        <div class="post-meta">
+            <span style="color: var(--text-muted)">CLASSIFIED // </span> {{ page.date | date: "%Y-%m-%d" }} <br>
+            <h1 style="font-family: var(--f-head); font-size: 3rem; margin: 15px 0; line-height: 1;">{{ page.title }}</h1>
+            
+            <!-- Display Tags here -->
+            <div class="tag-container">
+                <span style="color: var(--text-muted); margin-right: 10px;">KEYWORDS:</span>
+                {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="post-content">
+            {{ content }}
+        </div>
+        
+        <div style="margin-top: 80px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+            <a href="{{ '/' | relative_url }}#intel" class="btn-terminal">Close File</a>
+        </div>
+    </div>
+
+</body>
+</html>
