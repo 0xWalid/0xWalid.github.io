@@ -1,587 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Writeups | 0xWalid</title>
-    <meta name="description" content="Digital Dossier of a Junior Penetration Tester & Security Researcher.">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <style>
-        :root {
-            --bg-color: #050505;
-            --primary-green: #00ff41;
-            --secondary-green: #008f11;
-            --glass-bg: rgba(20, 20, 20, 0.6);
-            --glass-border: rgba(0, 255, 65, 0.2);
-            --text-color: #e0e0e0;
-            --font-header: 'Space Grotesk', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-mono);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- 3D Background Container --- */
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            /* Allow clicks to pass through */
-        }
-
-        /* --- CRT & Scanline Effects --- */
-        .scanline {
-            width: 100%;
-            height: 100px;
-            z-index: 9999;
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 255, 65, 0.04) 50%, rgba(0, 0, 0, 0) 100%);
-            opacity: 0.1;
-            position: fixed;
-            bottom: 100%;
-            animation: scanline 10s linear infinite;
-            pointer-events: none;
-        }
-
-        .crt-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            z-index: 9998;
-            pointer-events: none;
-            opacity: 0.15;
-        }
-
-        @keyframes scanline {
-            0% {
-                bottom: 100%;
-            }
-
-            100% {
-                bottom: -100px;
-            }
-        }
-
-        /* --- Typography --- */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: var(--font-header);
-            text-transform: uppercase;
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-        }
-
-        a {
-            color: var(--primary-green);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            text-shadow: 0 0 8px var(--primary-green);
-        }
-
-        /* --- Navigation --- */
-        .site-nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            background: var(--glass-bg);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .site-title {
-            font-family: var(--font-header);
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            position: relative;
-        }
-
-        .nav-link::before {
-            content: '>';
-            position: absolute;
-            left: -15px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-link:hover::before {
-            opacity: 1;
-        }
-
-        /* --- Main Content --- */
-        .page-content {
-            padding-top: 80px;
-            /* Space for fixed nav */
-            min-height: 100vh;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-
-        /* --- Hero Section --- */
-        .hero-section {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        .hero-title {
-            font-size: 5rem;
-            line-height: 1;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
-        }
-
-        .glitch-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-subtitle {
-            font-family: var(--font-mono);
-            font-size: 1.2rem;
-            color: #888;
-            margin-bottom: 3rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border: 1px solid var(--primary-green);
-            background: transparent;
-            color: var(--primary-green);
-            font-family: var(--font-mono);
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .btn:hover {
-            background: var(--primary-green);
-            color: var(--bg-color);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
-        }
-
-        /* --- Sections --- */
-        .section-title {
-            font-size: 2.5rem;
-            border-bottom: 2px solid var(--secondary-green);
-            padding-bottom: 0.5rem;
-            margin-bottom: 3rem;
-            display: inline-block;
-        }
-
-        .content-section {
-            padding: 5rem 0;
-        }
-
-        /* --- Grid Layouts --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--glass-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .card:hover {
-            border-color: var(--primary-green);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.1);
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: #aaa;
-            margin-bottom: 1.5rem;
-        }
-
-        /* --- Contact Section Specifics --- */
-        #contact .card {
-            background: rgba(10, 10, 10, 0.95);
-            /* Much darker/opaque background */
-            border: 1px solid var(--primary-green);
-            /* Make border pop more */
-        }
-
-        #contact .card p {
-            color: #fff;
-            /* Force white text */
-            text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-            /* Shadow for readability */
-        }
-
-        #contact .card strong {
-            color: var(--primary-green);
-            /* Highlight labels */
-        }
-
-        /* --- Footer --- */
-        .site-footer {
-            border-top: 1px solid var(--glass-border);
-            padding: 3rem 0;
-            margin-top: 5rem;
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-            flex-wrap: wrap;
-        }
-
-        .terminal-text {
-            font-size: 0.8rem;
-            color: var(--secondary-green);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        /* --- Post Styling --- */
-        .post-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 0;
-        }
-
-        .post-header {
-            margin-bottom: 3rem;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 2rem;
-        }
-
-        .post-title {
-            font-size: 3rem;
-        }
-
-        .post-meta {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .post-tags .tag {
-            display: inline-block;
-            background: rgba(0, 255, 65, 0.1);
-            color: var(--primary-green);
-            padding: 0.2rem 0.5rem;
-            margin-right: 0.5rem;
-            font-size: 0.8rem;
-            border: 1px solid var(--secondary-green);
-        }
-
-        .post-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .post-content h2 {
-            margin-top: 3rem;
-            font-size: 2rem;
-        }
-
-        .post-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .post-content code {
-            background: #111;
-            padding: 0.2rem 0.4rem;
-            color: var(--primary-green);
-            font-family: var(--font-mono);
-        }
-
-        .post-content pre {
-            background: #111;
-            padding: 1.5rem;
-            overflow-x: auto;
-            border: 1px solid var(--glass-border);
-            margin-bottom: 2rem;
-        }
-
-        .post-content pre code {
-            background: transparent;
-            padding: 0;
-            color: #e0e0e0;
-        }
-
-        /* --- Filter Buttons --- */
-        .filter-container {
-            margin-bottom: 3rem;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid var(--secondary-green);
-            color: #888;
-            padding: 0.5rem 1.5rem;
-            cursor: pointer;
-            font-family: var(--font-mono);
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: rgba(0, 255, 65, 0.1);
-            color: var(--primary-green);
-            border-color: var(--primary-green);
-        }
-
-        /* --- Glitch Effect (Simple CSS Version) --- */
-        .glitch-text {
-            position: relative;
-        }
-
-        .glitch-text::before,
-        .glitch-text::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-color);
-        }
-
-        .glitch-text::before {
-            left: 2px;
-            text-shadow: -1px 0 #ff00c1;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
-        }
-
-        .glitch-text::after {
-            left: -2px;
-            text-shadow: -1px 0 #00fff9;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim2 5s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
-            0% {
-                clip: rect(30px, 9999px, 10px, 0);
-            }
-
-            5% {
-                clip: rect(80px, 9999px, 90px, 0);
-            }
-
-            10% {
-                clip: rect(10px, 9999px, 40px, 0);
-            }
-
-            15% {
-                clip: rect(60px, 9999px, 20px, 0);
-            }
-
-            20% {
-                clip: rect(20px, 9999px, 70px, 0);
-            }
-
-            100% {
-                clip: rect(50px, 9999px, 50px, 0);
-            }
-        }
-
-        @keyframes glitch-anim2 {
-            0% {
-                clip: rect(10px, 9999px, 80px, 0);
-            }
-
-            20% {
-                clip: rect(80px, 9999px, 10px, 0);
-            }
-
-            40% {
-                clip: rect(30px, 9999px, 50px, 0);
-            }
-
-            60% {
-                clip: rect(60px, 9999px, 20px, 0);
-            }
-
-            80% {
-                clip: rect(20px, 9999px, 60px, 0);
-            }
-
-            100% {
-                clip: rect(40px, 9999px, 90px, 0);
-            }
-        }
-    </style>
-
-    <!-- Three.js & GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-</head>
-
-<body>
-    <div id="canvas-container"></div>
-    <div class="scanline"></div>
-    <div class="crt-overlay"></div>
-
-    <nav class="site-nav">
-        <div class="nav-container">
-            <a href="index.html" class="site-title">
-                <span class="glitch-text" data-text="0xWALID">0xWALID</span>
+---
+layout: default
+title: Intelligence Archives
+---
+
+<section style="padding-top: 150px; min-height: 100vh; align-items: flex-start;">
+    <div class="wrapper">
+        
+        <div class="grid-header">
+            <h2 style="font-size: 3rem;">Mission Archives</h2>
+            <div style="font-family: var(--f-code); color: var(--accent);">CLASSIFIED_REPORTS</div>
+        </div>
+
+        <!-- Search/Filter Bar -->
+        <!-- Added IDs to buttons for precise targeting from Header Links -->
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterSelection('all')" id="btn-all">ALL RECORDS</button>
+            <button class="filter-btn" onclick="filterSelection('Windows')" id="btn-windows">Windows</button>
+            <button class="filter-btn" onclick="filterSelection('Linux')" id="btn-linux">Linux</button>
+            <button class="filter-btn" onclick="filterSelection('Active Directory')" id="btn-active-directory">Active Directory</button>
+            <button class="filter-btn" onclick="filterSelection('CTF')" id="btn-ctf">CTF</button>
+        </div>
+
+        <div class="card-grid">
+            <!-- AUTOMATION: This loop grabs every file from your _posts folder -->
+            {% for post in site.posts %}
+            <a href="{{ post.url | relative_url }}" class="filter-item {{ post.tags | join: ' ' }}" style="text-decoration: none; color: inherit; display: block;">
+                <div class="pro-card">
+                    <div style="display: flex; justify-content: space-between; color: var(--accent); font-family: var(--f-code); font-size: 0.8rem; margin-bottom: 10px;">
+                        <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+                        <span>{{ post.categories | first }}</span>
+                    </div>
+                    <h3 style="margin-bottom: 10px;">{{ post.title }}</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+                    
+                    <div class="tag-container" style="margin-top: 20px;">
+                        {% for tag in post.tags %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
             </a>
-            <div class="nav-links">
-                <a href="index.html#ops" class="nav-link">PROJECTS</a>
-                <a href="index.html#intel" class="nav-link">WRITEUPS</a>
-                <a href="#" class="nav-link">ARCHIVES</a>
-                <a href="index.html#contact" class="nav-link">CONTACT</a>
-            </div>
+            {% endfor %}
         </div>
-    </nav>
 
-    <main class="page-content" aria-label="Content">
-
-        <section class="content-section">
-            <h2 class="section-title">INTEL ARCHIVES</h2>
-
-            <div class="filter-container">
-                <button class="filter-btn active" data-filter="all">ALL</button>
-                <button class="filter-btn" data-filter="ctf">CTF</button>
-                <button class="filter-btn" data-filter="research">RESEARCH</button>
-                <button class="filter-btn" data-filter="tutorial">TUTORIAL</button>
-            </div>
-
-            <div class="grid-container">
-
-                <div class="card post-item" data-tags="windows active directory ctf">
-                    <h3 class="card-title">HTB: Forest Writeup</h3>
-                    <p class="post-meta">Nov 20, 2023 | TAGS: WINDOWS, ACTIVE DIRECTORY, CTF</p>
-                    <p class="card-desc">A walkthrough of the Forest machine on HackTheBox. Topics include AS-REP
-                        Roasting, DCSync, and ACL abuse.</p>
-                    <a href="#" class="btn">READ INTEL</a>
-                </div>
-
-                <div class="card post-item" data-tags="linux ctf">
-                    <h3 class="card-title">Linux Privilege Escalation: Sudo Token Manipulation</h3>
-                    <p class="post-meta">Nov 18, 2023 | TAGS: LINUX, CTF</p>
-                    <p class="card-desc">Exploiting a misconfigured sudoers file and manipulating tokens to gain root
-                        access.</p>
-                    <a href="#" class="btn">READ INTEL</a>
-                </div>
-
-                <div class="card post-item" data-tags="ctf windows binary exploitation">
-                    <h3 class="card-title">Buffer Overflow: Stack Based</h3>
-                    <p class="post-meta">Nov 15, 2023 | TAGS: CTF, WINDOWS, BINARY EXPLOITATION</p>
-                    <p class="card-desc">Understanding the basics of stack-based buffer overflows. Fuzzing, finding the
-                        offset, and generating shellcode.</p>
-                    <a href="#" class="btn">READ INTEL</a>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <p class="terminal-text">>> SYSTEM STATUS: ONLINE</p>
-                <p class="terminal-text">>> ENCRYPTION: ENABLED</p>
-            </div>
-            <div class="footer-col social-links">
-                <a href="https://github.com/0xWalid" target="_blank" class="social-link">GITHUB</a>
-                <a href="https://linkedin.com/in/thewaleedahmed" target="_blank" class="social-link">LINKEDIN</a>
-            </div>
-            <div class="footer-col copyright">
-                <p>&copy; 2023 0xWalid | Offensive Security Specialist</p>
-            </div>
+        <div style="margin-top: 60px; text-align: center;">
+            <a href="{{ '/' | relative_url }}" class="btn-terminal">< Return to Base</a>
         </div>
-    </footer>
 
-    <script src="assets/js/background.js"></script>
-    <script src="assets/js/main.js"></script>
-</body>
+    </div>
+</section>
 
-</html>
+<!-- Filter Logic Script -->
+<script>
+    // 1. The Filter Function
+    function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filter-item");
+        if (c == "all") c = "";
+        
+        // Filter the list
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none"; 
+            // Check if classname contains the category string
+            if (x[i].className.indexOf(c) > -1) {
+                x[i].style.display = "block"; 
+            }
+        }
+        
+        // Update Active Button Visuals
+        var btns = document.getElementsByClassName("filter-btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].classList.remove("active");
+            
+            // Logic to highlight the button based on text content OR ID
+            // This ensures the button stays green whether clicked or loaded via URL
+            if (c === "" && btns[i].id === "btn-all") {
+                btns[i].classList.add("active");
+            } else if (c !== "" && btns[i].innerText.includes(c)) {
+                btns[i].classList.add("active");
+            }
+        }
+    }
+
+    // 2. Auto-Run on Load (Check URL for ?category=Windows)
+    // This connects with the Navigation Header links
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+        
+        if (category) {
+            filterSelection(category);
+        }
+    };
+</script>
