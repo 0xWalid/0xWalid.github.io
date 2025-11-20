@@ -5,7 +5,7 @@ title: Intelligence Archives
 
 <section style="padding-top: 150px; min-height: 100vh; align-items: flex-start;">
     <div class="wrapper">
-        
+
         <div class="grid-header">
             <h2 style="font-size: 3rem;">Mission Archives</h2>
             <div style="font-family: var(--f-code); color: var(--accent);">CLASSIFIED_REPORTS</div>
@@ -17,22 +17,26 @@ title: Intelligence Archives
             <button class="filter-btn active" onclick="filterSelection('all')" id="btn-all">ALL RECORDS</button>
             <button class="filter-btn" onclick="filterSelection('Windows')" id="btn-windows">Windows</button>
             <button class="filter-btn" onclick="filterSelection('Linux')" id="btn-linux">Linux</button>
-            <button class="filter-btn" onclick="filterSelection('Active Directory')" id="btn-active-directory">Active Directory</button>
+            <button class="filter-btn" onclick="filterSelection('Active Directory')" id="btn-active-directory">Active
+                Directory</button>
             <button class="filter-btn" onclick="filterSelection('CTF')" id="btn-ctf">CTF</button>
         </div>
 
         <div class="card-grid">
             <!-- AUTOMATION: This loop grabs every file from your _posts folder -->
             {% for post in site.posts %}
-            <a href="{{ post.url | relative_url }}" class="filter-item {{ post.tags | join: ' ' }}" style="text-decoration: none; color: inherit; display: block;">
+            <a href="{{ post.url | relative_url }}" class="filter-item {{ post.tags | join: ' ' }}"
+                style="text-decoration: none; color: inherit; display: block;">
                 <div class="pro-card">
-                    <div style="display: flex; justify-content: space-between; color: var(--accent); font-family: var(--f-code); font-size: 0.8rem; margin-bottom: 10px;">
+                    <div
+                        style="display: flex; justify-content: space-between; color: var(--accent); font-family: var(--f-code); font-size: 0.8rem; margin-bottom: 10px;">
                         <span>{{ post.date | date: "%Y-%m-%d" }}</span>
                         <span>{{ post.categories | first }}</span>
                     </div>
                     <h3 style="margin-bottom: 10px;">{{ post.title }}</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-                    
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">{{ post.excerpt | strip_html |
+                        truncatewords: 25 }}</p>
+
                     <div class="tag-container" style="margin-top: 20px;">
                         {% for tag in post.tags %}
                         <span class="tag">{{ tag }}</span>
@@ -44,7 +48,8 @@ title: Intelligence Archives
         </div>
 
         <div style="margin-top: 60px; text-align: center;">
-            <a href="{{ '/' | relative_url }}" class="btn-terminal">< Return to Base</a>
+            <a href="{{ '/' | relative_url }}" class="btn-terminal">
+                < Return to Base</a>
         </div>
 
     </div>
@@ -57,21 +62,21 @@ title: Intelligence Archives
         var x, i;
         x = document.getElementsByClassName("filter-item");
         if (c == "all") c = "";
-        
+
         // Filter the list
         for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none"; 
+            x[i].style.display = "none";
             // Check if classname contains the category string
             if (x[i].className.indexOf(c) > -1) {
-                x[i].style.display = "block"; 
+                x[i].style.display = "block";
             }
         }
-        
+
         // Update Active Button Visuals
         var btns = document.getElementsByClassName("filter-btn");
         for (var i = 0; i < btns.length; i++) {
             btns[i].classList.remove("active");
-            
+
             // Logic to highlight the button based on text content OR ID
             // This ensures the button stays green whether clicked or loaded via URL
             if (c === "" && btns[i].id === "btn-all") {
@@ -84,10 +89,10 @@ title: Intelligence Archives
 
     // 2. Auto-Run on Load (Check URL for ?category=Windows)
     // This connects with the Navigation Header links
-    window.onload = function() {
+    window.onload = function () {
         const urlParams = new URLSearchParams(window.location.search);
         const category = urlParams.get('category');
-        
+
         if (category) {
             filterSelection(category);
         }
