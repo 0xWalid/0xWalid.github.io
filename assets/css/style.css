@@ -1,0 +1,298 @@
+/* --- THEME CONFIGURATION: "TOXIC PROTOCOL" (MONOCHROME GREEN) --- */
+:root {
+    --bg: #050505;             /* Deep Carbon Black */
+    --panel: rgba(20, 20, 20, 0.6);
+    --text-main: #e0e0e0;      /* Off-white */
+    --text-muted: #666666;
+    
+    /* The Dual-Tone Accent: MONOCHROME GREEN */
+    --accent: #00ff41;         /* Bright Terminal Green */
+    --accent-secondary: #008f11; /* Darker Matrix Green */
+    
+    --accent-dim: rgba(0, 255, 65, 0.1);
+    --accent-glow: rgba(0, 255, 65, 0.4);
+    
+    --f-head: 'Space Grotesk', sans-serif;
+    --f-code: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-family: var(--f-head);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- 3D LAYER --- */
+#canvas-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Scanline texture */
+.overlay-texture {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+        linear-gradient(90deg, rgba(0, 255, 65, 0.03), rgba(0, 143, 17, 0.02), rgba(0, 255, 65, 0.03));
+    background-size: 100% 2px, 3px 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* --- NAVIGATION --- */
+nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.brand {
+    font-family: var(--f-code);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand::before {
+    content: '';
+    width: 10px; height: 10px;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.nav-links { display: flex; gap: 30px; }
+
+.nav-link {
+    font-family: var(--f-code);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-link:hover { color: var(--accent); }
+
+/* --- LAYOUT & SECTIONS --- */
+.wrapper {
+    position: relative;
+    z-index: 10;
+    padding: 0 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+/* --- HERO TYPOGRAPHY --- */
+.hero-label {
+    font-family: var(--f-code);
+    color: var(--accent-secondary);
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+}
+
+.hero-h1 {
+    font-size: 6vw;
+    line-height: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    max-width: 900px;
+}
+
+/* THE GLITCH EFFECT */
+.glitch-text {
+    position: relative;
+    color: white;
+    display: inline-block;
+}
+
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--bg);
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 var(--accent-secondary); 
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 var(--accent); 
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.hero-desc {
+    font-family: var(--f-code);
+    max-width: 500px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+}
+
+/* --- CARDS: PROFESSIONAL & GLASS --- */
+.grid-header {
+    display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.pro-card {
+    background: var(--panel);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.pro-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.card-icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.pro-card h3 {
+    font-family: var(--f-head);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.pro-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* --- TAG FILTER SYSTEM --- */
+.filter-bar {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-muted);
+    font-family: var(--f-code);
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0, 255, 65, 0.05);
+    box-shadow: 0 0 10px var(--accent-dim);
+}
+
+.tag-container {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.tag {
+    font-family: var(--f-code);
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* --- BUTTONS --- */
+.btn-terminal {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 30px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--f-code);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-terminal:hover {
+    background: var(--accent);
+    color: black;
+    box-shadow: 0 0 20px var(--accent-dim);
+}
+
+/* --- ANIMATIONS --- */
+@keyframes glitch-anim {
+    0% { clip: rect(31px, 9999px, 94px, 0); }
+    20% { clip: rect(6px, 9999px, 3px, 0); }
+    40% { clip: rect(28px, 9999px, 68px, 0); }
+    60% { clip: rect(10px, 9999px, 88px, 0); }
+    80% { clip: rect(45px, 9999px, 12px, 0); }
+    100% { clip: rect(94px, 9999px, 26px, 0); }
+}
+
+@media (max-width: 768px) {
+    .hero-h1 { font-size: 12vw; }
+    .wrapper { padding: 0 25px; }
+    nav { padding: 20px 25px; }
+}
