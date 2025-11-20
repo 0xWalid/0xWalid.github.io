@@ -1,4 +1,4 @@
-title: Waleed
+title: Waleed Ahmed Butt
 email: bu8.official@gmail.com
 description: Junior Penetration Tester Portfolio & Writeups
 baseurl: ""
@@ -6,3 +6,9 @@ url: "https://0xWalid.github.io"
 markdown: kramdown
 permalink: /:title/
 highlighter: rouge
+
+# --- Social & Contact Details ---
+github_username: 0xWalid
+linkedin_username: thewaleedahmed
+# Place your PDF in the 'assets' folder and name it 'resume.pdf'
+resume_file: /assets/resume.pdf
