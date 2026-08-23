@@ -65,7 +65,7 @@
       ". All reports open with a recruiter-friendly TL;DR — <a href='#labs'>check them out</a>."
       : "Lab notes coming soon."],
     [/cert|oscp|cpts|roadmap|study|learn/, () =>
-      "Roadmap: B.Sc. Software Engineering ✓ · SOC analyst field experience ✓ · <b>HackTheBox CPTS in progress (~65%)</b> → OSCP next → AI security track on the side. See the <a href='#privesc'>privesc section</a>."],
+      "Roadmap: B.Sc. Software Engineering ✓ · Cybersecurity Intern @ XO CyberUS ✓ · EC-Council & Mastercard programs ✓ · <b>HackTheBox CPTS in progress (~60%)</b> → OSCP next. See the <a href='#privesc'>privesc section</a>."],
     [/hire|contact|email|reach|touch|recruit/, () =>
       "Fastest path: <b>" + CONFIG.email + "</b> (copy button in the <a href='#pivot'>pivot section</a>). LinkedIn + GitHub links live there too. Response time &lt; 24h."],
     [/cv|resume/, () => "Hit any <b>download cv</b> button — or just press Ctrl+P on this site; it prints a clean one-pager by design."],
