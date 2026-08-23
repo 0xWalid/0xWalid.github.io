@@ -165,7 +165,7 @@
       "</button></div></article>";
     revObs.observe(featSlot.firstElementChild);
 
-    const FLAG = "FLAG{n3m3s1s_pwn3d}";
+    const FLAG = "FLAG{art1f4ct0ry_pwn3d}";
     const chip = $("#flagChip");
     const capture = () => {
       if (!chip || chip.classList.contains("captured")) return;

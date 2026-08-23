@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://0xwalid.github.io/</loc></url>
   <url><loc>https://0xwalid.github.io/writeups/</loc></url>
-  <url><loc>https://0xwalid.github.io/writeups/index.html?p=hexdump-htb</loc><lastmod>2026-08-10</lastmod></url>
+  <url><loc>https://0xwalid.github.io/writeups/index.html?p=ssrf-series-portswigger</loc><lastmod>2026-08-14</lastmod></url>
+  <url><loc>https://0xwalid.github.io/writeups/index.html?p=sqli-series-portswigger</loc><lastmod>2026-08-01</lastmod></url>
   <url><loc>https://0xwalid.github.io/writeups/index.html?p=prompt-injection-lab</loc><lastmod>2026-07-22</lastmod></url>
-  <url><loc>https://0xwalid.github.io/writeups/index.html?p=steel-mount-thm</loc><lastmod>2026-06-30</lastmod></url>
 </urlset>

@@ -97,14 +97,6 @@ const CONFIG = {
     },
     {
       id: "EXP-005",
-      title: "Discord Media Scraper",
-      desc: "GUI-based Python tool that bulk-downloads and automatically organizes Discord media into structured folders. Boring task? Automated anyway.",
-      tags: ["Python", "GUI", "Automation"],
-      stamp: "dep", stampLabel: "DEPLOYED",
-      links: [{ label: "source", url: "https://github.com/0xWalid/Discord-Media-Scraper" }]
-    },
-    {
-      id: "EXP-006",
       title: "this.website",
       desc: "The site you're reading. Hand-built with zero frameworks — proof that I care about building things properly as much as breaking them.",
       tags: ["HTML", "CSS", "Vanilla JS"],
@@ -128,11 +120,10 @@ const CONFIG = {
 
   /* machines you have rooted — shown in the lab tracker table */
   labs: [
-    { name: "PicoCTF — Web & API Set",       platform: "PicoCTF", difficulty: "Easy",   owned: "2026", tech: ["Web Exploitation", "API Logic Flaws", "PoC Reports"] },
-    { name: "LeakyGPT — Prompt Injection Lab", platform: "Personal", difficulty: "Medium", owned: "2026", tech: ["LLM Abuse", "Indirect Injection", "Exfiltration"] },
-    { name: "Wazuh Detection Lab",            platform: "Personal",  difficulty: "Medium", owned: "2026", tech: ["SIEM", "Alerting Rules", "Log Analysis"] }
+    { name: "SQLi Series — 18 Labs",         platform: "PortSwigger", difficulty: "Medium", owned: "2026-08", tech: ["UNION Attacks", "Blind Boolean/Error", "Time Delays", "OOB DNS"] },
+    { name: "SSRF Series — 7 Labs",           platform: "PortSwigger", difficulty: "Medium", owned: "2026-08", tech: ["Blacklist Bypass", "Open Redirect Chain", "Shellshock OOB", "Whitelist Parsing"] },
+    { name: "LeakyGPT — Prompt Injection Lab", platform: "Personal",    difficulty: "Medium", owned: "2026-07", tech: ["LLM Abuse", "Indirect Injection", "Exfiltration"] }
   ],
-
   /* people who solved the site-wide CTF (add names here) */
   ctfSolvers: [],
 

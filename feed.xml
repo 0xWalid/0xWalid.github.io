@@ -5,11 +5,18 @@
   <description>Security writeups, labs and AI security research by Waleed (0xWalid).</description>
   <language>en</language>
   <item>
-    <title>HEXDUMP — From SQLi to Root in 7 Steps</title>
-    <link>https://0xwalid.github.io/writeups/index.html?p=hexdump-htb</link>
-    <guid isPermaLink="false">hexdump-htb</guid>
-    <pubDate>Mon, 10 Aug 2026 12:00:00 GMT</pubDate>
-    <description>Proves I can chain a web vulnerability into a full system compromise and document it clearly enough for anyone to reproduce.</description>
+    <title>SSRF Field Guide — Breaking Trust Between Servers</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ssrf-series-portswigger</link>
+    <guid isPermaLink="false">ssrf-series-portswigger</guid>
+    <pubDate>Fri, 14 Aug 2026 12:00:00 GMT</pubDate>
+    <description>Demonstrates I can spot and exploit server-side request forgery across every defense tier — from naive local targets to hardened whitelist filters — with clean documentation throughout.</description>
+  </item>
+  <item>
+    <title>The Full SQL Injection Spectrum — 18 PortSwigger Labs</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=sqli-series-portswigger</link>
+    <guid isPermaLink="false">sqli-series-portswigger</guid>
+    <pubDate>Sat, 01 Aug 2026 12:00:00 GMT</pubDate>
+    <description>Proves end-to-end command of SQL injection — from simple auth bypasses to blind out-of-band data exfiltration — solved and documented lab by lab on the industry-standard platform.</description>
   </item>
   <item>
     <title>Talking an AI Into Trouble — Prompt Injection Lab</title>
@@ -17,12 +24,5 @@
     <guid isPermaLink="false">prompt-injection-lab</guid>
     <pubDate>Wed, 22 Jul 2026 12:00:00 GMT</pubDate>
     <description>Demonstrates original security research: I built a deliberately vulnerable AI assistant, then broke it four different ways to show why LLM apps need threat models too.</description>
-  </item>
-  <item>
-    <title>Steel Mountain — Enumeration Beats Exploits</title>
-    <link>https://0xwalid.github.io/writeups/index.html?p=steel-mount-thm</link>
-    <guid isPermaLink="false">steel-mount-thm</guid>
-    <pubDate>Tue, 30 Jun 2026 12:00:00 GMT</pubDate>
-    <description>Shows my methodology on Windows targets: patient enumeration finds the exact version numbers that turn a guessing game into a checklist.</description>
   </item>
 </channel></rss>
