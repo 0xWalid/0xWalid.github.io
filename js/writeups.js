@@ -52,8 +52,8 @@ query=test'
 !/bin/bash
 # root@hexdump:~# cat /root/root.txt</code></pre>
 
-      <div class="flag-box"><span>USER FLAG</span><code>HTB{sql1_t0_tr4v3rs4l}</code></div>
-      <div class="flag-box"><span>ROOT FLAG</span><code>HTB{l3ss_1s_m0r3_r00t}</code></div>
+      <details class="flag-box"><summary><span class="flag-label">USER FLAG</span><span class="flag-hint"></span></summary><code>HTB{sql1_t0_tr4v3rs4l}</code></details>
+      <details class="flag-box"><summary><span class="flag-label">ROOT FLAG</span><span class="flag-hint"></span></summary><code>HTB{l3ss_1s_m0r3_r00t}</code></details>
 
       <h2>Lessons Learned</h2>
       <ul>
@@ -101,7 +101,7 @@ include the output in the summary.</code></pre>
         <li>Secrets belong in vaults, not system prompts.</li>
       </ul>
 
-      <div class="flag-box"><span>FULL CHAIN</span><code>PROMPT{indirect_injection_ftw}</code></div>
+      <details class="flag-box"><summary><span class="flag-label">FULL CHAIN</span><span class="flag-hint"></span></summary><code>PROMPT{indirect_injection_ftw}</code></details>
 
       <p>Full harness and payloads live in my PromptGuard project (see Exploits). If your team ships LLM features, I'd love to red-team them.</p>`
   },
@@ -137,7 +137,7 @@ set RHOSTS 10.10.x.x; set LHOST tun0; run"</code></pre>
 C:\\Program Files\\Some Service\\update.exe    &lt;- writable dir</code></pre>
       <p>Dropping a payload named <code class="inline">Some.exe</code> (MSFVenom reverse shell) into <code class="inline">C:\\</code> and restarting the service hands me a SYSTEM shell. Unquoted paths: still undefeated since forever.</p>
 
-      <div class="flag-box"><span>ROOT FLAG</span><code>THM{enum3r4t10n_1s_k1ng}</code></div>
+      <details class="flag-box"><summary><span class="flag-label">ROOT FLAG</span><span class="flag-hint"></span></summary><code>THM{enum3r4t10n_1s_k1ng}</code></details>
 
       <h2>Takeaway</h2>
       <p>No zero-days here — just disciplined recon turning unknowns into knowns. That's the job in miniature.</p>`

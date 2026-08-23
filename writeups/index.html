@@ -85,6 +85,42 @@
     (() => {
       const { $, esc } = window.APP;
       const difCls = { Easy: "dif-easy", Medium: "dif-medium", Hard: "dif-hard", Insane: "dif-insane" };
+
+      function addCopyButtons(scope) {
+        if (!scope) return;
+        scope.querySelectorAll("pre.code").forEach(pre => {
+          const btn = document.createElement("button");
+          btn.className = "copy-btn mono";
+          btn.type = "button";
+          btn.setAttribute("aria-label", "Copy code to clipboard");
+          btn.textContent = "copy";
+          btn.addEventListener("click", async () => {
+            const code = pre.querySelector("code");
+            const text = (code || pre).innerText;
+            let ok = false;
+            try { await navigator.clipboard.writeText(text); ok = true; } catch (_) {}
+            if (!ok) {
+              try {
+                const ta = document.createElement("textarea");
+                ta.value = text;
+                ta.style.cssText = "position:fixed;opacity:0";
+                document.body.appendChild(ta);
+                ta.select();
+                ok = document.execCommand("copy");
+                ta.remove();
+              } catch (_) {}
+            }
+            btn.textContent = ok ? "[+] copied" : "[!] select manually";
+            btn.classList.add("done");
+            setTimeout(() => {
+              btn.textContent = "copy";
+              btn.classList.remove("done");
+            }, 1700);
+          });
+          pre.appendChild(btn);
+        });
+      }
+
       const sorted = [...WRITEUPS].sort((a, b) => String(b.date).localeCompare(String(a.date)));
       const params = new URLSearchParams(location.search);
       const slug = params.get("p");
@@ -115,6 +151,7 @@
 
         $("#waTldrText").textContent = w.tldr;
         $("#waBody").innerHTML = w.content;
+        addCopyButtons($("#waBody"));
 
         const prev = sorted[idx - 1], next = sorted[idx + 1];
         $("#waNav").innerHTML =

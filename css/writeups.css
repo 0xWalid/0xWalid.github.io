@@ -55,22 +55,44 @@ pre.code{
   font-family:var(--mono);font-size:.82rem;line-height:1.7;color:#b9e0d2;
 }
 pre.code::before{
-  content:attr(data-lang);position:absolute;top:0;right:0;
+  content:attr(data-lang);position:absolute;top:0;left:0;
   font-size:.58rem;letter-spacing:.16em;color:var(--dim);
-  background:var(--panel2);border-left:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--panel2);border-right:1px solid var(--line);border-bottom:1px solid var(--line);
   padding:.28rem .65rem;
 }
 pre.code code{color:inherit}
 
-.flag-box{
-  display:inline-flex;align-items:center;gap:1rem;margin:1rem 1rem 1rem 0;
-  border:1px dashed rgba(0,224,127,.5);background:rgba(0,224,127,.06);
-  padding:.75rem 1.1rem;
+.copy-btn{
+  position:absolute;top:.5rem;right:.55rem;z-index:2;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;
+  color:var(--muted);background:var(--panel2);
+  border:1px solid var(--line2);padding:.34rem .75rem;cursor:pointer;
+  opacity:0;transform:translateY(-3px);transition:.22s var(--ease);
 }
-.flag-box span{
-  font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:var(--green);
+pre.code:hover .copy-btn,.copy-btn:focus-visible{opacity:1;transform:none}
+.copy-btn:hover{color:var(--text);border-color:var(--red)}
+.copy-btn.done{color:var(--green);border-color:rgba(0,224,127,.55)}
+@media(hover:none){.copy-btn{opacity:1;transform:none}}
+
+details.flag-box{
+  margin:1rem 1rem 1rem 0;border:1px dashed rgba(0,224,127,.5);
+  background:rgba(0,224,127,.06);padding:.85rem 1.1rem;
 }
-.flag-box code{font-family:var(--mono);font-size:.88rem;color:var(--green)}
+details.flag-box summary{
+  display:flex;align-items:center;justify-content:space-between;gap:1.2rem;
+  cursor:pointer;list-style:none;user-select:none;
+}
+details.flag-box summary::-webkit-details-marker{display:none}
+details.flag-box summary:hover .flag-label{color:#7dff9b}
+.flag-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;color:var(--green)}
+.flag-hint{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--dim);white-space:nowrap}
+.flag-hint::after{content:"[ spoiler \2014  click to reveal ]"}
+details[open].flag-box{border-style:solid}
+details[open].flag-box .flag-hint::after{content:"[ hide ]"}
+details.flag-box code{
+  display:inline-block;margin-top:.75rem;font-family:var(--mono);
+  font-size:.92rem;color:var(--green);text-shadow:0 0 18px rgba(0,224,127,.5);
+}
 
 .wnav{
   display:flex;justify-content:space-between;gap:1rem;margin-top:3.5rem;

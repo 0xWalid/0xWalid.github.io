@@ -85,13 +85,20 @@ Open **[`js/writeups.js`](js/writeups.js)**, copy any existing entry, edit:
     <p>HTML goes here...</p>
     <h2>Step 1</h2>
     <pre class="code" data-lang="bash"><code>nmap -sV target</code></pre>
-    <div class="flag-box"><span>FLAG</span><code>HTB{...}</code></div>`
+    <details class="flag-box">
+      <summary><span class="flag-label">FLAG</span><span class="flag-hint"></span></summary>
+      <code>HTB{...}</code>   <!-- hidden until the reader clicks "reveal" -->
+    </details>`
 }
 ```
 
 That's it — it appears in the homepage preview (latest 4), the Lab Notes listing,
 and gets its own page with prev/next navigation automatically.
 No build step, no new files needed.
+
+**Spoiler etiquette is built in:** wrap any flag in a `flag-box` and readers
+following along must deliberately click to reveal it — the answer never shows
+by accident.
 
 ## 5 · Structure
 
