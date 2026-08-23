@@ -81,6 +81,10 @@
     });
     $$("#navLinks a").forEach(a =>
       a.addEventListener("click", () => document.body.classList.remove("menu-open")));
+    $$("#navLinks").forEach(nl =>
+      nl.addEventListener("click", e => {
+        if (e.target === nl) document.body.classList.remove("menu-open");
+      }));
     addEventListener("keydown", e => {
       if (e.key === "Escape") document.body.classList.remove("menu-open");
     });

@@ -232,13 +232,13 @@
         '<div class="filter-row mono">' + plats.map(p =>
           '<button class="fchip' + (p === active ? " on" : "") + '" data-p="' + esc(p) + '">' + esc(p) + "</button>").join("") +
         "</div>" +
-        '<table class="lab-table mono"><thead><tr><th>machine</th><th>platform</th><th>difficulty</th><th>techniques</th><th>owned</th></tr></thead><tbody>' +
+        '<div class="table-scroll"><table class="lab-table mono"><thead><tr><th>machine</th><th>platform</th><th>difficulty</th><th>techniques</th><th>owned</th></tr></thead><tbody>' +
         (rows.map(l =>
           "<tr><td>" + esc(l.name) + '</td><td class="dim">' + esc(l.platform) +
           '</td><td><span class="pill ' + (difCls[l.difficulty] || "plat") + '">' + esc(l.difficulty) + "</span></td>" +
           '<td class="dim techs">' + (l.tech || []).map(esc).join(" · ") + "</td><td>" + esc(l.owned) + "</td></tr>").join("") ||
           '<tr><td colspan="5" class="dim">// nothing here yet</td></tr>') +
-        "</tbody></table>";
+        "</tbody></table></div>";
     };
     paint();
     tracker.addEventListener("click", e => {
@@ -342,6 +342,7 @@
     }
 
     function draw() {
+      if (document.body.classList.contains("no-motion")) return;
       ctx.clearRect(0, 0, W, H);
       for (const p of pts) {
         p.x += p.vx; p.y += p.vy;
@@ -381,6 +382,10 @@
       if (visible && !document.hidden) raf = requestAnimationFrame(draw);
       else cancelAnimationFrame(raf);
     })).observe(canvas);
+    new MutationObserver(() => {
+      if (!document.body.classList.contains("no-motion") && visible && !document.hidden)
+        raf = requestAnimationFrame(draw);
+    }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
     raf = requestAnimationFrame(draw);
   }
 })();

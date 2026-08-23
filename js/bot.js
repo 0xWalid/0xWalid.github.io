@@ -2,9 +2,20 @@
 
 (() => {
   "use strict";
-  const { $, esc } = window.APP;
-  const host = $("#botHost");
-  if (!host || !window.CONFIG) return;
+
+  function boot() {
+  try {
+    const { $, esc } = window.APP;
+    let host = $("#botHost");
+    if (!host) {
+      host = document.createElement("div");
+      host.id = "botHost";
+      document.body.appendChild(host);
+    }
+    if (typeof CONFIG === "undefined") {
+      console.error("[walid-bot] CONFIG unavailable — is js/config.js loaded?");
+      return;
+    }
 
   host.innerHTML =
     '<button class="bot-fab mono" id="botFab" type="button" aria-label="Chat with walid-bot">?_</button>' +
@@ -89,4 +100,20 @@
       botSay("Boot complete. Ask me anything about Waleed — or type <b>hire</b> if you're here on business.", 400);
   });
   $("#botX").addEventListener("click", () => panel.classList.remove("open"));
+  } catch (err) {
+    console.error("[walid-bot] failed:", err);
+  }
+  }
+
+  function hasConfig() {
+    try { return typeof CONFIG !== "undefined"; } catch (_) { return false; }
+  }
+  function whenConfigReady(fn) {
+    if (hasConfig()) return fn();
+    const iv = setInterval(() => {
+      if (hasConfig()) { clearInterval(iv); fn(); }
+    }, 60);
+    setTimeout(() => clearInterval(iv), 8000);
+  }
+  whenConfigReady(boot);
 })();

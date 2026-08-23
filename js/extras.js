@@ -69,6 +69,8 @@
       '<button class="pal-item mono' + (i === sel ? " sel" : "") + '" data-i="' + i + '">' +
       "<span>" + APP.esc(it.label) + '</span><span class="pal-hint">' + APP.esc(it.hint) + "</span></button>").join("")
       || '<p class="pal-empty mono">// no results</p>';
+    const cur = list.querySelector(".pal-item.sel");
+    if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: "nearest" });
   }
   function filter(q) {
     q = q.trim().toLowerCase();
@@ -79,7 +81,10 @@
   function openPalette() {
     host.classList.add("open");
     input.value = ""; filter("");
-    input.focus();
+    requestAnimationFrame(() => {
+      input.focus();
+      requestAnimationFrame(() => input.focus());
+    });
   }
   function closePalette() { host.classList.remove("open"); }
 
@@ -113,7 +118,30 @@
     logo.after(k);
   }
 
-  /* ---------- sudo hire-me egg ---------- */
+  /* ---------- sudo hire-me ---------- */
+  let hireBusy = false;
+  function runHireMe() {
+    if (hireBusy) return;
+    hireBusy = true;
+    sfx.click(1200);
+    const ov = document.createElement("div");
+    ov.className = "privesc-overlay mono";
+    ov.innerHTML =
+      '<p>$ sudo hire-me</p><p class="ok">[sudo] password for recruiter: ********</p>' +
+      '<p class="ok">privilege escalation successful…</p><p class="big">ROOT ACCESS GRANTED</p>';
+    document.body.appendChild(ov);
+    setTimeout(() => ov.classList.add("show"), 30);
+    setTimeout(() => {
+      ov.classList.remove("show");
+      setTimeout(() => ov.remove(), 450);
+      location.hash = "#pivot";
+      const cb = $("#copyEmail");
+      if (cb) { cb.classList.add("pulse"); setTimeout(() => cb.classList.remove("pulse"), 3200); }
+      hireBusy = false;
+    }, 2100);
+  }
+  window.runHireMe = runHireMe;
+
   const BUF_MAX = 24;
   let buf = "";
   addEventListener("keydown", e => {
@@ -121,21 +149,7 @@
     buf = (buf + e.key.toLowerCase()).slice(-BUF_MAX);
     if (buf.endsWith("sudo hire-me") || buf.endsWith("hire-me")) {
       buf = "";
-      const ov = document.createElement("div");
-      ov.className = "privesc-overlay mono";
-      ov.innerHTML =
-        '<p>$ sudo hire-me</p><p class="ok">[sudo] password for recruiter: ********</p>' +
-        '<p class="ok">privilege escalation successful…</p><p class="big">ROOT ACCESS GRANTED</p>';
-      document.body.appendChild(ov);
-      sfx.click(1200);
-      setTimeout(() => ov.classList.add("show"), 30);
-      setTimeout(() => {
-        ov.classList.remove("show");
-        setTimeout(() => ov.remove(), 450);
-        location.hash = "#pivot";
-        const cb = $("#copyEmail");
-        if (cb) { cb.classList.add("pulse"); setTimeout(() => cb.classList.remove("pulse"), 3200); }
-      }, 2100);
+      runHireMe();
     }
   });
 
@@ -161,6 +175,13 @@
       }),
       mk("sfx: " + (localStorage.getItem("sfx") === "1" ? "on" : "off"), () => sfx.toggle())
     );
+    const hireBtn = document.createElement("button");
+    hireBtn.className = "foot-toggle mono";
+    hireBtn.type = "button";
+    hireBtn.textContent = "$ sudo hire-me";
+    hireBtn.title = "Run me";
+    hireBtn.addEventListener("click", runHireMe);
+    wrap.appendChild(hireBtn);
     foot.appendChild(wrap);
   }
 })();
