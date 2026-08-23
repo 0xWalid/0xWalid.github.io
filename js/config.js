@@ -126,8 +126,6 @@ const CONFIG = {
   /* people who solved the site-wide CTF (add names here) */
   ctfSolvers: [],
 
-  /* paste your real public key block later */
-  pgpFingerprint: "REPLACE-WITH-YOUR-PGP-FINGERPRINT",
 
   /* set visible:false to hide any link from the site */
   links: [

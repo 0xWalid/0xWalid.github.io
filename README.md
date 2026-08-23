@@ -108,7 +108,6 @@ by accident.
 - **Lab tracker table** — `CONFIG.labs`: every machine you own, filterable by platform.
 - **Hall of Fame** — `CONFIG.ctfSolvers`: a flag is hidden in three places across the site; solvers email you, you add their name here.
 - **walid-bot** — bottom-right chat bubble answering questions from your config data. Rule-based, offline, no APIs — edit answers in `js/bot.js`.
-- **PGP block** — replace `CONFIG.pgpFingerprint` with your real fingerprint.
 
 ## 6 · Feed & sitemap
 

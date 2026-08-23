@@ -591,7 +591,7 @@ body.no-motion .ticker-track{animation:none}
   .footer{border-top:1pt solid #999;padding-block:8pt}
 }
 
-/* ---------- lab tracker / ctf / pgp ---------- */
+/* ---------- lab tracker / ctf ---------- */
 .tracker-title{font-size:.72rem;letter-spacing:.18em;color:var(--red);margin:2.6rem 0 1rem}
 .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line)}
 .lab-table{width:100%;border-collapse:collapse;font-size:.76rem;min-width:560px}
@@ -614,14 +614,6 @@ body.no-motion .ticker-track{animation:none}
 .hof{list-style:none;font-size:.8rem;color:var(--text)}
 .hof li{padding-block:.35rem;border-bottom:1px dashed var(--line)}
 .hof li:last-child{border-bottom:0}
-
-.pgp-block{
-  display:inline-flex;align-items:center;gap:.9rem;margin-top:2.4rem;
-  border:1px solid var(--line2);background:var(--panel);padding:.75rem 1.15rem;
-  font-size:.68rem;letter-spacing:.08em;
-}
-.pgp-block span{color:var(--green);letter-spacing:.2em}
-.pgp-block code{color:var(--dim)}
 
 /* ---------- walid-bot ---------- */
 .bot-fab{

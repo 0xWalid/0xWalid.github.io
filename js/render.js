@@ -247,16 +247,13 @@
     });
   }
 
-  /* hall of fame + pgp */
+  /* hall of fame */
   const hof = $("#hofList");
   if (hof) {
     hof.innerHTML = (CONFIG.ctfSolvers || []).length
       ? CONFIG.ctfSolvers.map((s, i) => "<li>" + String(i + 1).padStart(2, "0") + " :: " + esc(s) + "</li>").join("")
       : '<li class="dim">// no solvers yet — the flag is live, be the first.</li>';
   }
-  const pgp = $("#pgpFp");
-  if (pgp) pgp.textContent = "fingerprint: " + (CONFIG.pgpFingerprint || "");
-
   /* roadmap */
   const road = $("#roadmap");
   if (road) {
