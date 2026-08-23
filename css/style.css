@@ -552,15 +552,6 @@ body.phosphor #toast{border-color:#00ff41}
 .btn.pulse{animation:pulse-btn 1s ease infinite}
 @keyframes pulse-btn{0%,100%{box-shadow:0 0 24px -8px rgba(255,45,85,.55)}50%{box-shadow:0 0 44px -4px rgba(255,45,85,.95)}}
 
-/* ---------- footer toggles ---------- */
-.foot-toggles{display:flex;gap:.6rem}
-.foot-toggle{
-  font-size:.64rem;letter-spacing:.12em;color:var(--dim);background:none;
-  border:1px solid var(--line2);padding:.35rem .75rem;cursor:pointer;transition:.25s;
-}
-.foot-toggle:hover{color:var(--text);border-color:var(--red)}
-.foot-toggle.on{color:var(--green);border-color:rgba(0,224,127,.5)}
-
 /* ---------- article reading progress ---------- */
 .read-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:115}
 .read-progress span{display:block;height:100%;background:var(--green);transform-origin:left;transform:scaleX(0)}
@@ -575,7 +566,7 @@ body.no-motion .ticker-track{animation:none}
 /* ---------- print / CV mode ---------- */
 @media print{
   body::before,.nav,#boot,.scroll-progress,.ticker,#packetCanvas,.hero-grid-bg,
-  .scroll-hint,.toast,#paletteHost,.menu-btn,.foot-toggles,.foot-hint,
+  .scroll-hint,.toast,#paletteHost,.menu-btn,.foot-hint,
   .term-bar,.terminal,.more-link,.lab-arrow,.reticle,.radar,
   .bot-fab,.bot-panel{display:none!important}
   body{background:#fff;color:#111;font-size:12pt}

@@ -104,12 +104,11 @@ by accident.
 
 - **Ctrl+K command palette** — jump to sections, writeups and actions (also the `ctrl k` chip next to the logo).
 - **Print = instant CV** — `Ctrl+P` on any page produces a clean one-pager (print stylesheet, zero maintenance).
-- **`sudo hire-me`** — type it anywhere on the homepage… see what happens.
+- **`sudo hire-me`** — a hidden egg: type it anywhere on the homepage… see what happens.
 - **Lab tracker table** — `CONFIG.labs`: every machine you own, filterable by platform.
 - **Hall of Fame** — `CONFIG.ctfSolvers`: a flag is hidden in three places across the site; solvers email you, you add their name here.
 - **walid-bot** — bottom-right chat bubble answering questions from your config data. Rule-based, offline, no APIs — edit answers in `js/bot.js`.
 - **PGP block** — replace `CONFIG.pgpFingerprint` with your real fingerprint.
-- **Safe-mode & SFX toggles** — footer buttons; both persist via localStorage. Typing sounds are synthesized WebAudio (no files), off by default.
 
 ## 6 · Feed & sitemap
 

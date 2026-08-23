@@ -6,31 +6,6 @@
   if (!$("#paletteHost")) return;
   const ROOTP = location.pathname.indexOf("/writeups") === 0 ? "../" : "";
 
-  /* ---------- sfx ---------- */
-  let audioCtx = null;
-  const sfx = {
-    on: localStorage.getItem("sfx") === "1",
-    click(freq) {
-      if (!this.on) return;
-      try {
-        audioCtx = audioCtx || new AudioContext();
-        const o = audioCtx.createOscillator(), g = audioCtx.createGain();
-        o.type = "square"; o.frequency.value = freq || 620;
-        g.gain.setValueAtTime(.035, audioCtx.currentTime);
-        g.gain.exponentialRampToValueAtTime(.0001, audioCtx.currentTime + .06);
-        o.connect(g).connect(audioCtx.destination);
-        o.start(); o.stop(audioCtx.currentTime + .07);
-      } catch (_) {}
-    },
-    toggle() {
-      this.on = !this.on;
-      localStorage.setItem("sfx", this.on ? "1" : "0");
-      APP.toast(this.on ? "[ sfx enabled ]" : "[ sfx muted ]");
-      if (this.on) this.click(880);
-    }
-  };
-  window.SFX = sfx;
-
   /* ---------- palette ---------- */
   const items = [
     ...[["About Me", "#recon"], ["Skills", "#enum"], ["Projects", "#exploits"],
@@ -140,7 +115,6 @@
       hireBusy = false;
     }, 2100);
   }
-  window.runHireMe = runHireMe;
 
   const BUF_MAX = 24;
   let buf = "";
@@ -153,35 +127,4 @@
     }
   });
 
-  /* ---------- footer toggles ---------- */
-  const foot = $(".footer .footer-inner");
-  if (foot) {
-    const wrap = document.createElement("div");
-    wrap.className = "foot-toggles mono";
-    const mk = (label, fn, state) => {
-      const b = document.createElement("button");
-      b.className = "foot-toggle mono";
-      b.type = "button";
-      b.textContent = label;
-      if (state) b.classList.add("on");
-      b.addEventListener("click", () => { fn(); b.classList.toggle("on"); });
-      return b;
-    };
-    wrap.append(
-      mk("motion: " + (localStorage.getItem("no-motion") === "1" ? "off" : "on"), () => {
-        const off = document.body.classList.toggle("no-motion");
-        localStorage.setItem("no-motion", off ? "1" : "0");
-        APP.toast(off ? "[ safe mode — motion disabled ]" : "[ motion restored ]");
-      }),
-      mk("sfx: " + (localStorage.getItem("sfx") === "1" ? "on" : "off"), () => sfx.toggle())
-    );
-    const hireBtn = document.createElement("button");
-    hireBtn.className = "foot-toggle mono";
-    hireBtn.type = "button";
-    hireBtn.textContent = "$ sudo hire-me";
-    hireBtn.title = "Run me";
-    hireBtn.addEventListener("click", runHireMe);
-    wrap.appendChild(hireBtn);
-    foot.appendChild(wrap);
-  }
 })();

@@ -108,7 +108,6 @@
     (function type() {
       const word = CONFIG.roles[ri];
       typedEl.textContent = word.slice(0, ci);
-      if (window.SFX && ci > 0 && Math.random() < .35) window.SFX.click(700 + Math.random() * 150);
       if (!del && ci < word.length) { ci++; setTimeout(type, 52); }
       else if (!del) { del = true; setTimeout(type, 1700); }
       else if (ci > 0) { ci--; setTimeout(type, 26); }

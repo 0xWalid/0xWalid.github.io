@@ -28,7 +28,6 @@
           let c = 0;
           (function tick() {
             span.textContent = line.cmd.slice(0, ++c);
-            if (window.SFX && c % 2 === 0 && Math.random() < .6) SFX.click(520 + Math.random() * 180);
             if (c < line.cmd.length) setTimeout(tick, 34);
             else setTimeout(nextLine, 260);
           })();
@@ -131,7 +130,6 @@
         span.textContent = l[1];
         nmap.appendChild(span);
         nmap.appendChild(document.createTextNode("\n"));
-        if (window.SFX && l[1]) SFX.click(460 + Math.random() * 140);
         setTimeout(next, reduced ? 10 : 170);
       })();
     };
