@@ -28,6 +28,8 @@
     </div>
   </header>
 
+  <div class="read-progress" aria-hidden="true"><span id="waProgress"></span></div>
+
   <main id="main">
     <!-- ============ LISTING VIEW ============ -->
     <div id="listingView">
@@ -76,11 +78,13 @@
     </div>
   </footer>
 
+  <div id="paletteHost"></div>
   <div id="toast" class="toast mono" role="status" aria-live="polite"></div>
 
   <script src="../js/config.js"></script>
   <script src="../js/writeups.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/extras.js"></script>
   <script>
     (() => {
       const { $, esc } = window.APP;
@@ -153,6 +157,17 @@
         $("#waBody").innerHTML = w.content;
         addCopyButtons($("#waBody"));
 
+        const bar = document.getElementById("waProgress");
+        const onScroll = () => {
+          const el = document.getElementById("waBody");
+          const r = el.getBoundingClientRect();
+          const total = r.height - innerHeight * .5;
+          const done = Math.min(1, Math.max(0, (-r.top + innerHeight * .35) / (total || 1)));
+          bar.style.transform = "scaleX(" + done + ")";
+        };
+        addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
         const prev = sorted[idx - 1], next = sorted[idx + 1];
         $("#waNav").innerHTML =
           (next ? '<a class="wnav-link" href="?p=' + encodeURIComponent(next.slug) + '">&larr; newer<br><span>' + esc(next.title) + "</span></a>" : "<span></span>") +
@@ -163,6 +178,8 @@
       /* ---------- listing mode ---------- */
       $("#articleView").remove();
       $("#notFoundView").remove();
+      const rp = document.querySelector(".read-progress");
+      if (rp) rp.remove();
 
       const platforms = ["ALL", ...new Set(sorted.map(w => w.platform))];
       let active = "ALL";

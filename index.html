@@ -39,6 +39,9 @@
   <a class="skip-link" href="#main">skip to content</a>
 
   <div id="boot" aria-hidden="true">
+    <pre class="boot-art mono" aria-hidden="true">  ┌─┐┬ ┬┌─┐  ┌─┐┬┌─
+  ├─┤│ │├─┘  ├─┘├┴┐
+  ┴ ┴└─┴┴     ┴  ┴ ┴</pre>
     <div class="boot-lines">
       <p data-delay="0">[ OK ] initialising 0xwalid.dev</p>
       <p data-delay="1">[ OK ] loading modules :: offensive / defensive / engineering</p>
@@ -173,6 +176,7 @@
         </header>
         <p class="labs-intro reveal">Field reports from machines I've owned, bugs I've chained, and AI systems I've talked into misbehaving. Every report opens with a plain-English TL;DR &mdash; <strong>what it proves about me</strong>.</p>
         <div class="lab-list" id="labPreview"></div>
+        <div id="labTracker" class="reveal"></div>
         <p class="more-link mono reveal">&gt; <a href="writeups/index.html">browse all lab notes</a> &#8599;</p>
       </div>
     </section>
@@ -186,6 +190,13 @@
         </header>
         <p class="roadmap-note reveal">Where I've been, what I'm climbing toward. In this field, learning never stops &mdash; that's exactly why I love it.</p>
         <div class="roadmap" id="roadmap"></div>
+
+        <div class="ctf-card reveal" id="ctfCard">
+          <p class="mono ctf-tag">// SITE CTF // HALL OF FAME</p>
+          <p class="ctf-copy">A flag is hidden somewhere on this site — three pieces, three hiding spots.
+          Reassemble it and email me the result to earn your place below. <span class="dim mono">(hint: crawlers welcome)</span></p>
+          <ol class="hof mono" id="hofList"></ol>
+        </div>
       </div>
     </section>
 
@@ -204,6 +215,10 @@
             <a class="btn btn-ghost" href="#" id="cvBtnBottom">download cv</a>
           </div>
           <div class="link-grid" id="linkGrid"></div>
+          <div class="pgp-block mono reveal" id="pgpBlock">
+            <span>PGP</span>
+            <code id="pgpFp"></code>
+          </div>
         </div>
       </div>
     </section>
@@ -217,11 +232,13 @@
     </div>
   </footer>
 
+  <div id="paletteHost"></div>
   <div id="toast" class="toast mono" role="status" aria-live="polite"></div>
 
   <script src="js/config.js"></script>
   <script src="js/writeups.js"></script>
   <script src="js/main.js"></script>
   <script src="js/render.js"></script>
+  <script src="js/extras.js"></script>
 </body>
 </html>

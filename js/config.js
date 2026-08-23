@@ -116,6 +116,19 @@ const CONFIG = {
       desc: "Ongoing side quest: prompt injection, LLM abuse cases, adversarial inputs — securing the newest attack surface there is." }
   ],
 
+  /* machines you have rooted — shown in the lab tracker table */
+  labs: [
+    { name: "HEXDUMP",      platform: "HackTheBox", difficulty: "Easy",   owned: "2026-08-10", tech: ["SQLi", "LFI", "sudo less"] },
+    { name: "Steel Mountain", platform: "TryHackMe",  difficulty: "Easy",   owned: "2026-06-30", tech: ["Recon", "HFS RCE", "Unquoted Path"] },
+    { name: "LeakyGPT Lab",  platform: "Personal",    difficulty: "Medium", owned: "2026-07-22", tech: ["Prompt Injection", "Exfiltration"] }
+  ],
+
+  /* people who solved the site-wide CTF (add names here) */
+  ctfSolvers: [],
+
+  /* paste your real public key block later */
+  pgpFingerprint: "REPLACE-WITH-YOUR-PGP-FINGERPRINT",
+
   /* set visible:false to hide any link from the site */
   links: [
     { key: "email",    label: "Email",      url: "",                              visible: true },

@@ -28,6 +28,7 @@
           let c = 0;
           (function tick() {
             span.textContent = line.cmd.slice(0, ++c);
+            if (window.SFX && c % 2 === 0 && Math.random() < .6) SFX.click(520 + Math.random() * 180);
             if (c < line.cmd.length) setTimeout(tick, 34);
             else setTimeout(nextLine, 260);
           })();
@@ -130,6 +131,7 @@
         span.textContent = l[1];
         nmap.appendChild(span);
         nmap.appendChild(document.createTextNode("\n"));
+        if (window.SFX && l[1]) SFX.click(460 + Math.random() * 140);
         setTimeout(next, reduced ? 10 : 170);
       })();
     };
@@ -216,6 +218,46 @@
       '<span class="lab-arrow">&#8594;</span></a>').join("");
     labPrev.querySelectorAll(".reveal").forEach(el => revObs.observe(el));
   }
+
+  /* lab tracker table */
+  const tracker = $("#labTracker");
+  if (tracker && CONFIG.labs) {
+    const difCls = { Easy: "dif-easy", Medium: "dif-medium", Hard: "dif-hard", Insane: "dif-insane" };
+    const plats = ["ALL", ...new Set(CONFIG.labs.map(l => l.platform))];
+    let active = "ALL";
+    const paint = () => {
+      const rows = CONFIG.labs.filter(l => active === "ALL" || l.platform === active);
+      tracker.innerHTML =
+        '<p class="mono tracker-title">// machine tracker</p>' +
+        '<div class="filter-row mono">' + plats.map(p =>
+          '<button class="fchip' + (p === active ? " on" : "") + '" data-p="' + esc(p) + '">' + esc(p) + "</button>").join("") +
+        "</div>" +
+        '<table class="lab-table mono"><thead><tr><th>machine</th><th>platform</th><th>difficulty</th><th>techniques</th><th>owned</th></tr></thead><tbody>' +
+        (rows.map(l =>
+          "<tr><td>" + esc(l.name) + '</td><td class="dim">' + esc(l.platform) +
+          '</td><td><span class="pill ' + (difCls[l.difficulty] || "plat") + '">' + esc(l.difficulty) + "</span></td>" +
+          '<td class="dim techs">' + (l.tech || []).map(esc).join(" · ") + "</td><td>" + esc(l.owned) + "</td></tr>").join("") ||
+          '<tr><td colspan="5" class="dim">// nothing here yet</td></tr>') +
+        "</tbody></table>";
+    };
+    paint();
+    tracker.addEventListener("click", e => {
+      const b = e.target.closest(".fchip");
+      if (!b) return;
+      active = b.dataset.p;
+      paint();
+    });
+  }
+
+  /* hall of fame + pgp */
+  const hof = $("#hofList");
+  if (hof) {
+    hof.innerHTML = (CONFIG.ctfSolvers || []).length
+      ? CONFIG.ctfSolvers.map((s, i) => "<li>" + String(i + 1).padStart(2, "0") + " :: " + esc(s) + "</li>").join("")
+      : '<li class="dim">// no solvers yet — the flag is live, be the first.</li>';
+  }
+  const pgp = $("#pgpFp");
+  if (pgp) pgp.textContent = "fingerprint: " + (CONFIG.pgpFingerprint || "");
 
   /* roadmap */
   const road = $("#roadmap");
