@@ -591,19 +591,19 @@ body.no-motion .ticker-track{animation:none}
   .footer{border-top:1pt solid #999;padding-block:8pt}
 }
 
-/* ---------- lab tracker / ctf ---------- */
-.tracker-title{font-size:.72rem;letter-spacing:.18em;color:var(--red);margin:2.6rem 0 1rem}
-.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line)}
-.lab-table{width:100%;border-collapse:collapse;font-size:.76rem;min-width:560px}
-.lab-table th{
-  text-align:left;font-size:.62rem;letter-spacing:.16em;color:var(--dim);
-  font-weight:500;border-bottom:1px solid var(--line2);padding:.55rem .7rem;
+/* ---------- project repo links / ctf ---------- */
+.repo-btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:.7rem;letter-spacing:.06em;color:var(--text);
+  border:1px solid var(--line2);background:var(--bg2);
+  padding:.6rem 1rem;transition:.25s var(--ease);
 }
-.lab-table td{border-bottom:1px dashed var(--line);padding:.65rem .7rem;color:var(--text)}
-.lab-table td.dim,.lab-table .techs{color:var(--muted);font-size:.74rem}
-.lab-table tbody tr{transition:background .25s}
-.lab-table tbody tr:hover{background:var(--panel)}
-.filter-row .fchip{margin-bottom:.8rem}
+.repo-btn svg{width:15px;height:15px;fill:currentColor}
+.repo-btn i{font-style:normal;color:var(--dim);transition:.25s}
+.repo-btn:hover{border-color:var(--red);background:var(--red-soft);transform:translateY(-2px)}
+.repo-btn:hover i{color:var(--red);transform:translate(2px,-2px)}
+.side-link{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--line2)}
+.side-link:hover{color:var(--red);border-color:var(--red)}
 
 .ctf-card{
   margin-top:4rem;border:1px dashed rgba(255,45,85,.45);background:var(--red-soft);

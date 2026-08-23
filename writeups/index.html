@@ -42,7 +42,10 @@
         </div>
       </header>
       <div class="container">
-        <div class="filter-row mono" id="filters" role="group" aria-label="Filter writeups"></div>
+        <div class="wn-tools">
+          <input id="wnSearch" class="mono wn-search" type="search" placeholder="search titles &amp; techniques…" autocomplete="off" spellcheck="false">
+          <div class="filter-row mono" id="filters" role="group" aria-label="Filter writeups"></div>
+        </div>
         <div class="wn-list" id="wnList"></div>
         <p class="mono wn-count" id="wnCount"></p>
       </div>
@@ -187,9 +190,12 @@
       filters.innerHTML = platforms.map(p =>
         '<button class="fchip' + (p === active ? " on" : "") + '" data-p="' + esc(p) + '">' + esc(p) + "</button>").join("");
 
+      let query = "";
       function paint() {
+        const q = query.trim().toLowerCase();
         const items = sorted.filter(w => w.visible !== false)
-          .filter(w => active === "ALL" || w.platform === active);
+          .filter(w => active === "ALL" || w.platform === active)
+          .filter(w => !q || (w.title + " " + w.tldr + " " + (w.category || []).join(" ")).toLowerCase().includes(q));
         $("#wnList").innerHTML = items.map(w =>
           '<a class="lab-card reveal in" href="?p=' + encodeURIComponent(w.slug) + '">' +
           '<div class="lab-badges"><span class="pill plat">' + esc(w.platform) + '</span>' +
@@ -199,7 +205,7 @@
           '<div class="lab-meta"><span>' + esc(w.date) + "</span><span>" + w.minutes +
           ' min read</span><span>' + (w.category || []).map(esc).join(" \u00b7 ") + "</span></div></div>" +
           '<span class="lab-arrow">&#8594;</span></a>').join("");
-        $("#wnCount").textContent = "// " + items.length + " report(s) on file";
+        $("#wnCount").textContent = "// " + items.length + " of " + sorted.filter(w => w.visible !== false).length + " reports on file";
       }
 
       filters.addEventListener("click", e => {

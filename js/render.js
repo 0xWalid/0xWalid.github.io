@@ -144,6 +144,15 @@
     }
   }
 
+  const GH_ICON = '<svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12v3.14c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>';
+  function repoLink(l) {
+    const isGh = /github\.com/.test(l.url || "");
+    if (!isGh)
+      return '<a class="side-link" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + " \u2197</a>";
+    return '<a class="repo-btn mono" href="' + esc(l.url) + '" target="_blank" rel="noopener">' +
+      GH_ICON + "<span>View on GitHub</span><i>\u2197</i></a>";
+  }
+
   /* projects */
   const stampCls = { poc: "s-poc", active: "s-active", wip: "s-wip", dep: "s-dep" };
   const featured = (CONFIG.projects || []).find(p => p.featured);
@@ -158,7 +167,7 @@
       "<p>" + esc(featured.desc) + "</p>" +
       '<div class="feat-meta">' + (featured.tags || []).map(t => "<span class=\"tag\">" + esc(t) + "</span>").join("") + "</div>" +
       '<div class="proj-links" style="margin-top:1.4rem">' + (featured.links || []).map(l =>
-        '<a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + " &#8599;</a>").join("") +
+        repoLink(l)).join("") +
       "</div></div>" +
       '<button class="flag-chip mono" id="flagChip" type="button" aria-label="Capture the flag">' +
       "<small>RESTRICTED // CAPTURE TO DECRYPT</small><code>\u2588\u2588\u2588\u2588-\u2588\u2588\u2588\u2588\u2588\u2588\u2588</code>" +
@@ -191,7 +200,7 @@
       '</div><span class="stamp ' + (stampCls[p.stamp] || "s-poc") + '">' +
       esc(p.stampLabel || p.stamp) + '</span></div>' +
       '<div class="proj-links">' + (p.links || []).map(l =>
-        '<a href="' + esc(l.url) + '" target="_blank" rel="noopener">[' + esc(l.label) + "]</a>").join("") +
+        repoLink(l)).join("") +
       "</div></article>").join("");
     grid.querySelectorAll(".reveal").forEach(el => revObs.observe(el));
   }
@@ -215,36 +224,6 @@
       ' min read</span><span>' + (w.category || []).map(esc).join(" \u00b7 ") + "</span></div></div>" +
       '<span class="lab-arrow">&#8594;</span></a>').join("");
     labPrev.querySelectorAll(".reveal").forEach(el => revObs.observe(el));
-  }
-
-  /* lab tracker table */
-  const tracker = $("#labTracker");
-  if (tracker && CONFIG.labs) {
-    const difCls = { Easy: "dif-easy", Medium: "dif-medium", Hard: "dif-hard", Insane: "dif-insane" };
-    const plats = ["ALL", ...new Set(CONFIG.labs.map(l => l.platform))];
-    let active = "ALL";
-    const paint = () => {
-      const rows = CONFIG.labs.filter(l => active === "ALL" || l.platform === active);
-      tracker.innerHTML =
-        '<p class="mono tracker-title">// machine tracker</p>' +
-        '<div class="filter-row mono">' + plats.map(p =>
-          '<button class="fchip' + (p === active ? " on" : "") + '" data-p="' + esc(p) + '">' + esc(p) + "</button>").join("") +
-        "</div>" +
-        '<div class="table-scroll"><table class="lab-table mono"><thead><tr><th>machine</th><th>platform</th><th>difficulty</th><th>techniques</th><th>owned</th></tr></thead><tbody>' +
-        (rows.map(l =>
-          "<tr><td>" + esc(l.name) + '</td><td class="dim">' + esc(l.platform) +
-          '</td><td><span class="pill ' + (difCls[l.difficulty] || "plat") + '">' + esc(l.difficulty) + "</span></td>" +
-          '<td class="dim techs">' + (l.tech || []).map(esc).join(" · ") + "</td><td>" + esc(l.owned) + "</td></tr>").join("") ||
-          '<tr><td colspan="5" class="dim">// nothing here yet</td></tr>') +
-        "</tbody></table></div>";
-    };
-    paint();
-    tracker.addEventListener("click", e => {
-      const b = e.target.closest(".fchip");
-      if (!b) return;
-      active = b.dataset.p;
-      paint();
-    });
   }
 
   /* hall of fame */

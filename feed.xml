@@ -25,4 +25,190 @@
     <pubDate>Wed, 22 Jul 2026 12:00:00 GMT</pubDate>
     <description>Demonstrates original security research: I built a deliberately vulnerable AI assistant, then broke it four different ways to show why LLM apps need threat models too.</description>
   </item>
+  <item>
+    <title>SSRF with whitelist based input filter</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-ssrf-07</link>
+    <guid isPermaLink="false">ps-ssrf-07</guid>
+    <pubDate>Tue, 20 Jan 2026 12:00:00 GMT</pubDate>
+    <description>Server-Side Request Forgery (SSRF) — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>Blind SSRF with Shellshock exploitation</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-ssrf-06</link>
+    <guid isPermaLink="false">ps-ssrf-06</guid>
+    <pubDate>Fri, 02 Jan 2026 12:00:00 GMT</pubDate>
+    <description>blind Server-Side Request Forgery (SSRF) — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>Blind SSRF with out of band detection</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-ssrf-03</link>
+    <guid isPermaLink="false">ps-ssrf-03</guid>
+    <pubDate>Thu, 01 Jan 2026 12:00:00 GMT</pubDate>
+    <description>blind Server-Side Request Forgery (SSRF) — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>SSRF with blacklist based input filter</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-ssrf-04</link>
+    <guid isPermaLink="false">ps-ssrf-04</guid>
+    <pubDate>Thu, 01 Jan 2026 12:00:00 GMT</pubDate>
+    <description>Server-Side Request Forgery (SSRF) — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>Initial Testing &amp; Vulnerability Identification</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-ssrf-05</link>
+    <guid isPermaLink="false">ps-ssrf-05</guid>
+    <pubDate>Thu, 01 Jan 2026 12:00:00 GMT</pubDate>
+    <description>Exploit a Server‑Side Request Forgery (SSRF) vulnerability by abusing an open redirection flaw in the *Next product* feature to access an internal adm…</description>
+  </item>
+  <item>
+    <title>Basic SSRF against another back end system</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-ssrf-02</link>
+    <guid isPermaLink="false">ps-ssrf-02</guid>
+    <pubDate>Mon, 29 Dec 2025 12:00:00 GMT</pubDate>
+    <description>Server-Side Request Forgery (SSRF) — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>Basic SSRF against the local server</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-ssrf-01</link>
+    <guid isPermaLink="false">ps-ssrf-01</guid>
+    <pubDate>Sun, 28 Dec 2025 12:00:00 GMT</pubDate>
+    <description>Server-Side Request Forgery (SSRF) — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>Lab: Blind SQL injection with time delays</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-14</link>
+    <guid isPermaLink="false">ps-sqli-14</guid>
+    <pubDate>Tue, 23 Dec 2025 12:00:00 GMT</pubDate>
+    <description>blind SQL injection vulnerability using time delays — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>Blind SQL injection with time delays and information retrieval</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-15</link>
+    <guid isPermaLink="false">ps-sqli-15</guid>
+    <pubDate>Tue, 23 Dec 2025 12:00:00 GMT</pubDate>
+    <description>blind SQL injection vulnerability using time delays — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>Blind SQL injection with out of band interaction</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-16</link>
+    <guid isPermaLink="false">ps-sqli-16</guid>
+    <pubDate>Tue, 23 Dec 2025 12:00:00 GMT</pubDate>
+    <description>blind SQL injection vulnerability — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>Blind SQL injection with out of band data exfiltration</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-17</link>
+    <guid isPermaLink="false">ps-sqli-17</guid>
+    <pubDate>Tue, 23 Dec 2025 12:00:00 GMT</pubDate>
+    <description>blind SQL injection vulnerability — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>SQL injection with filter bypass via XML encoding</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-18</link>
+    <guid isPermaLink="false">ps-sqli-18</guid>
+    <pubDate>Tue, 23 Dec 2025 12:00:00 GMT</pubDate>
+    <description>SQL injection vulnerability in an XML-based POST request — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>Blind SQL injection with conditional errors</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-12</link>
+    <guid isPermaLink="false">ps-sqli-12</guid>
+    <pubDate>Sat, 20 Dec 2025 12:00:00 GMT</pubDate>
+    <description>blind SQL injection vulnerability — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>Visible error based SQL injection</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-13</link>
+    <guid isPermaLink="false">ps-sqli-13</guid>
+    <pubDate>Sat, 20 Dec 2025 12:00:00 GMT</pubDate>
+    <description>visible error-based SQL injection — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>SQL injection UNION attack, retrieving multiple values in a single column</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-10</link>
+    <guid isPermaLink="false">ps-sqli-10</guid>
+    <pubDate>Tue, 16 Dec 2025 12:00:00 GMT</pubDate>
+    <description>- The vulnerable parameter was `category` in the product filtering functionality.
+- Supplying normal category values such as `Gifts` returned valid pr…</description>
+  </item>
+  <item>
+    <title>Blind SQL injection with conditional responses</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-11</link>
+    <guid isPermaLink="false">ps-sqli-11</guid>
+    <pubDate>Tue, 16 Dec 2025 12:00:00 GMT</pubDate>
+    <description>administrator password — solved and documented end to end.</description>
+  </item>
+  <item>
+    <title>SQL injection UNION attack, determining the number of columns returned by the query</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-07</link>
+    <guid isPermaLink="false">ps-sqli-07</guid>
+    <pubDate>Sun, 14 Dec 2025 12:00:00 GMT</pubDate>
+    <description>- The vulnerable parameter was the `category` parameter on the product listing page.
+- Normal request:
+    
+    ```
+    category=Pets
+    ```…</description>
+  </item>
+  <item>
+    <title>SQL injection UNION attack, finding a column containing text</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-08</link>
+    <guid isPermaLink="false">ps-sqli-08</guid>
+    <pubDate>Sun, 14 Dec 2025 12:00:00 GMT</pubDate>
+    <description>- The vulnerable parameter was `category` in the product filtering feature.
+- Normal values such as `Accessories` loaded products correctly.
+- Injecti…</description>
+  </item>
+  <item>
+    <title>SQL injection UNION attack, retrieving data from other tables</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-09</link>
+    <guid isPermaLink="false">ps-sqli-09</guid>
+    <pubDate>Sun, 14 Dec 2025 12:00:00 GMT</pubDate>
+    <description>- The vulnerable parameter was `category` in the product filtering functionality.
+- Supplying normal values such as `Pets` returned valid product list…</description>
+  </item>
+  <item>
+    <title>SQL injection attack, listing the database contents on non Oracle databases</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-05</link>
+    <guid isPermaLink="false">ps-sqli-05</guid>
+    <pubDate>Thu, 11 Dec 2025 12:00:00 GMT</pubDate>
+    <description>- The vulnerable parameter was located in the category field of the product listing system.
+- The original value was something like `category=Gifts`.…</description>
+  </item>
+  <item>
+    <title>SQL injection attack, listing the database contents on Oracle</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-06</link>
+    <guid isPermaLink="false">ps-sqli-06</guid>
+    <pubDate>Thu, 11 Dec 2025 12:00:00 GMT</pubDate>
+    <description>---…</description>
+  </item>
+  <item>
+    <title>SQL injection attack, querying the database type and version on MySQL and Microsoft</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-04</link>
+    <guid isPermaLink="false">ps-sqli-04</guid>
+    <pubDate>Wed, 10 Dec 2025 12:00:00 GMT</pubDate>
+    <description>- The vulnerable parameter was located in the category field of a product listing endpoint.
+- The original value was `category=Pets`. Supplying normal…</description>
+  </item>
+  <item>
+    <title>SQL Injection in WHERE Clause (Retrieve Hidden Data)</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-01</link>
+    <guid isPermaLink="false">ps-sqli-01</guid>
+    <pubDate>Tue, 09 Dec 2025 12:00:00 GMT</pubDate>
+    <description>A boolean‑based SQL injection vulnerability inside the `category` parameter allowed retrieval of products normally hidden from the user.…</description>
+  </item>
+  <item>
+    <title>SQL Injection Vulnerability Allowing Login Bypass</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-02</link>
+    <guid isPermaLink="false">ps-sqli-02</guid>
+    <pubDate>Tue, 09 Dec 2025 12:00:00 GMT</pubDate>
+    <description>A classic boolean‑based SQL injection inside the login form allowed authentication as the `administrator` user without knowing the password.…</description>
+  </item>
+  <item>
+    <title>Oracle SQL Injection – Extracting Database Type &amp; Version (UNION‑Based Enumeration)</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=ps-sqli-03</link>
+    <guid isPermaLink="false">ps-sqli-03</guid>
+    <pubDate>Tue, 09 Dec 2025 12:00:00 GMT</pubDate>
+    <description>---…</description>
+  </item>
 </channel></rss>

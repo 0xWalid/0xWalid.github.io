@@ -118,12 +118,6 @@ const CONFIG = {
       desc: "The industry benchmark for offensive security. 24 hours, 5 machines, zero excuses." }
   ],
 
-  /* machines you have rooted — shown in the lab tracker table */
-  labs: [
-    { name: "SQLi Series — 18 Labs",         platform: "PortSwigger", difficulty: "Medium", owned: "2026-08", tech: ["UNION Attacks", "Blind Boolean/Error", "Time Delays", "OOB DNS"] },
-    { name: "SSRF Series — 7 Labs",           platform: "PortSwigger", difficulty: "Medium", owned: "2026-08", tech: ["Blacklist Bypass", "Open Redirect Chain", "Shellshock OOB", "Whitelist Parsing"] },
-    { name: "LeakyGPT — Prompt Injection Lab", platform: "Personal",    difficulty: "Medium", owned: "2026-07", tech: ["LLM Abuse", "Indirect Injection", "Exfiltration"] }
-  ],
   /* people who solved the site-wide CTF (add names here) */
   ctfSolvers: [],
 
