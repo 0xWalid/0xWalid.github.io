@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+  <title>0xWalid — Lab Notes</title>
+  <link>https://0xwalid.github.io/writeups/</link>
+  <description>Security writeups, labs and AI security research by Waleed (0xWalid).</description>
+  <language>en</language>
+  <item>
+    <title>HEXDUMP — From SQLi to Root in 7 Steps</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=hexdump-htb</link>
+    <guid isPermaLink="false">hexdump-htb</guid>
+    <pubDate>Mon, 10 Aug 2026 12:00:00 GMT</pubDate>
+    <description>Proves I can chain a web vulnerability into a full system compromise and document it clearly enough for anyone to reproduce.</description>
+  </item>
+  <item>
+    <title>Talking an AI Into Trouble — Prompt Injection Lab</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=prompt-injection-lab</link>
+    <guid isPermaLink="false">prompt-injection-lab</guid>
+    <pubDate>Wed, 22 Jul 2026 12:00:00 GMT</pubDate>
+    <description>Demonstrates original security research: I built a deliberately vulnerable AI assistant, then broke it four different ways to show why LLM apps need threat models too.</description>
+  </item>
+  <item>
+    <title>Steel Mountain — Enumeration Beats Exploits</title>
+    <link>https://0xwalid.github.io/writeups/index.html?p=steel-mount-thm</link>
+    <guid isPermaLink="false">steel-mount-thm</guid>
+    <pubDate>Tue, 30 Jun 2026 12:00:00 GMT</pubDate>
+    <description>Shows my methodology on Windows targets: patient enumeration finds the exact version numbers that turn a guessing game into a checklist.</description>
+  </item>
+</channel></rss>

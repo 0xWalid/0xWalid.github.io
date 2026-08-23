@@ -1,0 +1,4 @@
+Contact: mailto:waleed@0xwalid.dev
+Expires: 2027-08-23T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://0xwalid.github.io/.well-known/security.txt

@@ -1,0 +1,6 @@
+# welcome, curious crawler
+# hint for humans: real ones read comments. piece 1 of 3: ZM9VTQ
+User-agent: *
+Allow: /
+
+Sitemap: https://0xwalid.github.io/sitemap.xml
