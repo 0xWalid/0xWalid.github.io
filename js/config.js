@@ -61,7 +61,7 @@ const CONFIG = {
       desc: "A practitioner-first autonomous pentesting framework built on Sovereign Blackboard Architecture (SBA) — scope-enforced, token-efficient assessments driven by a parameterized tradecraft playbook. Maps attack surfaces, fires OWASP/PortSwigger vectors, and falls back to dynamic research for missing exploits. Best part: it plugs into opencode, so even free AI models can run structured pentests.",
       tags: ["AI Pentesting", "SBA", "opencode", "OWASP Top 10", "Automation"],
       stamp: "active", stampLabel: "ACTIVE OP",
-      links: [{ label: "source", url: "#" }, { label: "docs soon", url: "#" }]
+      links: [{ label: "source", url: "https://github.com/0xWalid/Artifactory-engine" }]
     },
     {
       id: "EXP-001",
@@ -69,7 +69,7 @@ const CONFIG = {
       desc: "An AI-assisted threat intelligence dashboard that aggregates, parses and analyzes global CVE feeds with LLMs — turning raw vulnerability noise into operational summaries analysts can actually act on.",
       tags: ["Python", "LLM", "Threat Intel"],
       stamp: "active", stampLabel: "ACTIVE OP",
-      links: [{ label: "source", url: "#" }]
+      links: [{ label: "source", url: "https://github.com/0xWalid/CVEs-Foresight" }]
     },
     {
       id: "EXP-002",
@@ -85,7 +85,7 @@ const CONFIG = {
       desc: "Recon automation built on the SSLMate API — extracts subdomains and parses certificate-transparency logs to map external network surfaces in seconds instead of hours.",
       tags: ["Python", "OSINT", "Cert Transparency"],
       stamp: "dep", stampLabel: "DEPLOYED",
-      links: [{ label: "script", url: "#" }]
+      links: [{ label: "script", url: "https://github.com/0xWalid/sslmate_ctsearcher" }]
     },
     {
       id: "EXP-004",
@@ -97,11 +97,19 @@ const CONFIG = {
     },
     {
       id: "EXP-005",
+      title: "Discord Media Scraper",
+      desc: "GUI-based Python tool that bulk-downloads and automatically organizes Discord media into structured folders. Boring task? Automated anyway.",
+      tags: ["Python", "GUI", "Automation"],
+      stamp: "dep", stampLabel: "DEPLOYED",
+      links: [{ label: "source", url: "https://github.com/0xWalid/Discord-Media-Scraper" }]
+    },
+    {
+      id: "EXP-006",
       title: "this.website",
       desc: "The site you're reading. Hand-built with zero frameworks — proof that I care about building things properly as much as breaking them.",
       tags: ["HTML", "CSS", "Vanilla JS"],
       stamp: "dep", stampLabel: "LIVE",
-      links: [{ label: "source", url: "#" }]
+      links: [{ label: "source", url: "https://github.com/0xWalid/0xWalid.github.io" }]
     }
   ],
 
@@ -134,7 +142,7 @@ const CONFIG = {
     { key: "github",   label: "GitHub",     url: "https://github.com/0xWalid",                visible: true },
     { key: "linkedin", label: "LinkedIn",   url: "https://linkedin.com/in/thewaleedahmed",    visible: true },
     { key: "youtube",  label: "YouTube",    url: "https://youtube.com/@00xWalid",             visible: true },
-    { key: "htb",      label: "HackTheBox", url: "#",                                         visible: true },
+    { key: "htb",      label: "HackTheBox", url: "#",                                         visible: false },
     { key: "thm",      label: "TryHackMe",  url: "#",                                         visible: false },
     { key: "x",        label: "X / Twitter", url: "#",                                        visible: false }
   ]

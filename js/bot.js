@@ -62,8 +62,8 @@
     }],
     [/writeup|lab|htb|hackthebox|thm|tryhackme|blog/, () =>
       latest.length ? "Latest lab notes: " + latest.slice(0, 3).map(w => "«" + w.title + "»").join(", ") +
-      ". All reports open with a recruiter-friendly TL;DR — <a href='#labs'>check them out</a>."
-      : "Lab notes coming soon."],
+      ". Reports open with a recruiter-friendly TL;DR — <a href='#labs'>see them</a>, and the full archive lives at <b>github.com/0xWalid/Learnings</b>."
+      : "Full labs archive: <b>github.com/0xWalid/Learnings</b>"],
     [/cert|oscp|cpts|roadmap|study|learn/, () =>
       "Roadmap: B.Sc. Software Engineering ✓ · Cybersecurity Intern @ XO CyberUS ✓ · EC-Council & Mastercard programs ✓ · <b>HackTheBox CPTS in progress (~60%)</b> → OSCP next. See the <a href='#privesc'>privesc section</a>."],
     [/hire|contact|email|reach|touch|recruit/, () =>
