@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Connection Refused</title>
+  <meta name="theme-color" content="#0a0a0c">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0a0c;--line:#212129;--text:#eceae6;--muted:#8f8f9a;--red:#ff2d55;
+      --mono:'JetBrains Mono',monospace;--sans:'Space Grotesk',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100svh;
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+    .wrap{max-width:560px}
+    .code{font-family:var(--mono);font-size:clamp(3rem,12vw,7rem);font-weight:700;color:var(--red);
+      text-shadow:0 0 40px rgba(255,45,85,.35)}
+    pre{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-align:left;
+      border:1px solid var(--line);padding:1.2rem;margin:1.6rem 0;line-height:1.8;overflow-x:auto}
+    .ok{color:#00e07f}
+    a{display:inline-block;font-family:var(--mono);font-size:.82rem;color:var(--text);
+      text-decoration:none;border:1px solid var(--red);padding:.85rem 1.6rem;transition:.25s}
+    a:hover{background:rgba(255,45,85,.14)}
+    p{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="code">404</div>
+    <pre>$ curl -I https://0xwalid.dev/this-page
+<span class="ok">HTTP/2 200</span> ...just kidding.
+HTTP/2 <b style="color:var(--red)">404</b> — target not found
+exploitation attempt logged ;)</pre>
+    <p>This resource doesn't exist — but the rest of the perimeter is worth a scan.</p>
+    <br>
+    <a href="/">&larr; return to base</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waleed · 0xWalid — Offensive Security</title>
+  <meta name="description" content="Waleed (0xWalid) — software engineer turned aspiring penetration tester. SOC experience, AI security research, labs and writeups. I break into systems so criminals can't.">
+  <meta property="og:title" content="Waleed · 0xWalid — Offensive Security">
+  <meta property="og:description" content="I break into systems so criminals can't. Pentesting, SOC, AI security.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0a0a0c">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <noscript><style>#boot{display:none}.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">skip to content</a>
+
+  <div id="boot" aria-hidden="true">
+    <div class="boot-lines">
+      <p data-delay="0">[ OK ] initialising 0xwalid.dev</p>
+      <p data-delay="1">[ OK ] loading modules :: offensive / defensive / engineering</p>
+      <p data-delay="2">[ OK ] establishing uplink ........ connected</p>
+      <p data-delay="3" class="boot-grant">[ ACCESS GRANTED ]_</p>
+    </div>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <header class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo" id="logo" aria-label="Home">~/<span>0xWalid</span><span class="caret">_</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="#recon" title="About Me" aria-label="About Me"><i>01</i>recon</a>
+        <a href="#enum" title="Skills" aria-label="Skills"><i>02</i>enum</a>
+        <a href="#exploits" title="Projects" aria-label="Projects"><i>03</i>exploits</a>
+        <a href="#labs" title="Writeups &amp; Labs" aria-label="Writeups and Labs"><i>04</i>labs</a>
+        <a href="#privesc" title="Certifications &amp; Roadmap" aria-label="Certifications and Roadmap"><i>05</i>privesc</a>
+        <a href="#pivot" class="nav-cta" title="Contact" aria-label="Contact"><i>06</i>pivot</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ 00 // HERO ============ -->
+    <section class="hero" id="top" aria-label="Introduction">
+      <canvas id="packetCanvas" aria-hidden="true"></canvas>
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <div class="status-chip"><span class="dot"></span>STATUS: OPEN TO OPPORTUNITIES</div>
+          <h1 class="hero-name" data-text="WALEED">WALEED</h1>
+          <p class="hero-alias mono">&gt; alias: 0xWALID</p>
+          <p class="hero-statement">I break into systems <em>so criminals can't.</em></p>
+          <p class="hero-typed mono" aria-hidden="true">&gt; <span id="typedText"></span><span class="type-caret"></span></p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#exploits">view exploits <span aria-hidden="true">&darr;</span></a>
+            <a class="btn btn-ghost" href="#" id="cvBtnTop">download cv</a>
+          </div>
+        </div>
+        <div class="terminal reveal delay-2" role="img" aria-label="Terminal showing Waleed's profile summary">
+          <div class="term-bar"><span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span><span class="term-title mono">waleed@ops: ~</span></div>
+          <pre class="term-body mono" id="heroTerm"></pre>
+        </div>
+      </div>
+      <a class="scroll-hint mono" href="#recon" aria-hidden="true">scroll<span class="hint-line"></span></a>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+
+    <!-- ============ 01 // RECON ============ -->
+    <section class="section" id="recon" aria-labelledby="reconTitle">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-index mono">01 // RECON</span>
+          <h2 id="reconTitle" data-scramble>About Me</h2>
+        </header>
+        <div class="recon-grid">
+          <article class="dossier reveal">
+            <div class="dossier-head mono">TARGET PROFILE <span class="blink-red">&#9679;</span> LIVE</div>
+            <div class="dossier-photo" aria-hidden="true"><span>W&gt;</span></div>
+            <dl class="dossier-fields mono">
+              <div><dt>CODENAME</dt><dd id="dAlias">0xWalid</dd></div>
+              <div><dt>ROLE</dt><dd id="dRole">Aspiring Penetration Tester</dd></div>
+              <div><dt>BASE</dt><dd id="dBase">Earth &middot; remote-friendly</dd></div>
+              <div><dt>CLEARANCE</dt><dd>PUBLIC (for now)</dd></div>
+              <div><dt>STATUS</dt><dd class="ok">SEEKING Jr. PENTEST ROLE</dd></div>
+            </dl>
+          </article>
+          <div class="recon-copy reveal delay-1">
+            <p class="lead">Software engineer by training. <strong>SOC analyst</strong> by experience. <strong>Penetration tester</strong> by obsession.</p>
+            <p>I spent my degree learning how software is built &mdash; then a job in a Security Operations Centre taught me how it gets broken. Now I sit in the overlap: I write code well enough to know exactly where it fails, and I think like an attacker well enough to find it before someone malicious does.</p>
+            <p>These days I'm deep in offensive security &mdash; hacking my way through HackTheBox labs, researching <strong>AI security</strong> (yes, you can prompt-inject your way into trouble), and preparing for the <strong>OSCP</strong>. This site is my lab notebook: everything I break, fix and learn ends up here.</p>
+            <ul class="chips">
+              <li>web exploitation</li>
+              <li>active directory</li>
+              <li>AI security research</li>
+              <li>incident response</li>
+              <li>python tooling</li>
+            </ul>
+            <div class="stat-row" id="statRow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 // ENUMERATION ============ -->
+    <section class="section section-alt" id="enum" aria-labelledby="enumTitle">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-index mono">02 // ENUMERATION</span>
+          <h2 id="enumTitle" data-scramble>My Skills</h2>
+        </header>
+        <div class="enum-grid">
+          <div class="terminal scan-term reveal">
+            <div class="term-bar"><span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span><span class="term-title mono">nmap &mdash; skill scan</span></div>
+            <pre class="term-body mono" id="nmapTerm"></pre>
+          </div>
+          <div class="skills-wrap" id="skillGroups"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 // EXPLOITS ============ -->
+    <section class="section" id="exploits" aria-labelledby="exTitle">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-index mono">03 // EXPLOITS</span>
+          <h2 id="exTitle" data-scramble>Projects &amp; Proof of Work</h2>
+        </header>
+
+        <div id="featuredSlot"></div>
+        <div class="proj-grid" id="projectGrid"></div>
+
+        <p class="more-link mono reveal">&gt; full arsenal on <a href="#" id="ghMoreLink" target="_blank" rel="noopener">github.com/0xWalid</a> &#8599;</p>
+      </div>
+    </section>
+
+    <!-- ============ 04 // LAB NOTES ============ -->
+    <section class="section section-alt" id="labs" aria-labelledby="labsTitle">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-index mono">04 // LAB NOTES</span>
+          <h2 id="labsTitle" data-scramble>Writeups, Labs &amp; Research</h2>
+        </header>
+        <p class="labs-intro reveal">Field reports from machines I've owned, bugs I've chained, and AI systems I've talked into misbehaving. Every report opens with a plain-English TL;DR &mdash; <strong>what it proves about me</strong>.</p>
+        <div class="lab-list" id="labPreview"></div>
+        <p class="more-link mono reveal">&gt; <a href="writeups/index.html">browse all lab notes</a> &#8599;</p>
+      </div>
+    </section>
+
+    <!-- ============ 05 // PRIVESC ============ -->
+    <section class="section" id="privesc" aria-labelledby="priTitle">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-index mono">05 // PRIVILEGE ESCALATION</span>
+          <h2 id="priTitle" data-scramble>Certifications &amp; Roadmap</h2>
+        </header>
+        <p class="roadmap-note reveal">Where I've been, what I'm climbing toward. In this field, learning never stops &mdash; that's exactly why I love it.</p>
+        <div class="roadmap" id="roadmap"></div>
+      </div>
+    </section>
+
+    <!-- ============ 06 // PIVOT ============ -->
+    <section class="section pivot" id="pivot" aria-labelledby="piTitle">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-index mono">06 // PIVOT</span>
+          <h2 id="piTitle" data-scramble>Get in Touch</h2>
+        </header>
+        <div class="pivot-inner">
+          <p class="pivot-big reveal">Let's talk.<br><span class="dim">Recruiting? Got a CTF team? Just curious?</span></p>
+          <p class="mono pivot-flavor reveal">$ nc -nv <span id="pivotHost">0xwalid.dev</span> 4444 <span class="ok"># response time: &lt;24h</span></p>
+          <div class="pivot-actions reveal">
+            <button class="btn btn-primary" id="copyEmail" type="button">copy email address</button>
+            <a class="btn btn-ghost" href="#" id="cvBtnBottom">download cv</a>
+          </div>
+          <div class="link-grid" id="linkGrid"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="mono foot-line">$ echo "designed &amp; built by Waleed &mdash; no frameworks, no trackers, pure craft"</p>
+      <p class="mono foot-hint" title="a secret for the dedicated">&uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr;BA</p>
+      <p class="mono">&copy; <span id="year"></span> Waleed &middot; 0xWalid</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast mono" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/writeups.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/render.js"></script>
+</body>
+</html>
