@@ -254,40 +254,40 @@ body.menu-open .menu-btn span:nth-child(2){transform:translateY(-3.5px) rotate(-
 .delay-2{transition-delay:.24s}
 
 /* ---------- recon ---------- */
-.recon-grid{display:grid;grid-template-columns:minmax(280px,.9fr) 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.recon-grid{display:grid;grid-template-columns:minmax(330px,1.05fr) 1.2fr;gap:clamp(2rem,5vw,4rem);align-items:start}
 .dossier{
-  background:var(--panel);border:1px solid var(--line2);position:relative;padding:1.4rem;
+  background:var(--panel);border:1px solid var(--line2);position:relative;padding:1.9rem;
   clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,22px 100%,0 calc(100% - 22px));
 }
 .dossier::before{
   content:"CLASSIFIED // PERSONNEL FILE";position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%) rotate(-14deg);font-family:var(--mono);font-size:1.5rem;
+  transform:translate(-50%,-50%) rotate(-14deg);font-family:var(--mono);font-size:1.6rem;
   color:var(--red);opacity:.07;letter-spacing:.2em;white-space:nowrap;pointer-events:none;
 }
 .dossier-head{
-  font-size:.68rem;letter-spacing:.2em;color:var(--dim);
-  border-bottom:1px dashed var(--line2);padding-bottom:.8rem;margin-bottom:1.2rem;
+  font-size:.75rem;letter-spacing:.2em;color:var(--dim);
+  border-bottom:1px dashed var(--line2);padding-bottom:.9rem;margin-bottom:1.4rem;
   display:flex;justify-content:space-between;align-items:center;
 }
 .blink-red{color:var(--red);animation:blink 1.2s steps(1) infinite}
 .dossier-photo{
-  aspect-ratio:4/3.4;background:
+  aspect-ratio:16/10;background:
     repeating-linear-gradient(45deg,transparent 0 10px,rgba(255,255,255,.015) 10px 20px),var(--bg2);
-  border:1px solid var(--line);display:grid;place-items:center;margin-bottom:1.2rem;
+  border:1px solid var(--line);display:grid;place-items:center;margin-bottom:1.4rem;
   position:relative;
 }
 .dossier-photo::before,.dossier-photo::after,
 .dossier-photo span::before,.dossier-photo span::after{
-  content:"";position:absolute;width:22px;height:22px;border:2px solid var(--red);opacity:.85;
+  content:"";position:absolute;width:26px;height:26px;border:2px solid var(--red);opacity:.85;
 }
-.dossier-photo::before{top:10px;left:10px;border-right:0;border-bottom:0}
-.dossier-photo::after{top:10px;right:10px;border-left:0;border-bottom:0}
-.dossier-photo span::before{bottom:10px;left:10px;border-right:0;border-top:0}
-.dossier-photo span::after{bottom:10px;right:10px;border-left:0;border-top:0}
-.dossier-photo span{font-family:var(--mono);font-size:3.2rem;font-weight:700;color:var(--red);opacity:.85}
+.dossier-photo::before{top:12px;left:12px;border-right:0;border-bottom:0}
+.dossier-photo::after{top:12px;right:12px;border-left:0;border-bottom:0}
+.dossier-photo span::before{bottom:12px;left:12px;border-right:0;border-top:0}
+.dossier-photo span::after{bottom:12px;right:12px;border-left:0;border-top:0}
+.dossier-photo span{font-family:var(--mono);font-size:3.8rem;font-weight:700;color:var(--red);opacity:.85}
 .dossier-fields div{
-  display:flex;justify-content:space-between;gap:1rem;padding-block:.55rem;
-  border-bottom:1px dashed var(--line);font-size:.76rem;
+  display:flex;justify-content:space-between;gap:1rem;padding-block:.72rem;
+  border-bottom:1px dashed var(--line);font-size:.86rem;
 }
 .dossier-fields dt{color:var(--dim);letter-spacing:.1em}
 .dossier-fields dd{text-align:right}
@@ -295,18 +295,18 @@ body.menu-open .menu-btn span:nth-child(2){transform:translateY(-3.5px) rotate(-
 
 .lead{font-size:clamp(1.25rem,2.6vw,1.7rem);font-weight:500;line-height:1.35;margin-bottom:1.2rem}
 .recon-copy p+p{margin-top:1rem;color:var(--muted)}
-.chips{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.5rem}
 .chips li{
-  font-family:var(--mono);font-size:.72rem;color:var(--muted);
-  border:1px solid var(--line2);padding:.35rem .75rem;transition:.25s;
+  font-family:var(--mono);font-size:.78rem;color:var(--muted);
+  border:1px solid var(--line2);padding:.45rem .9rem;transition:.25s;
 }
 .chips li:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
 
-.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2rem}
-.stat-row .stat{background:var(--bg2);padding:1.1rem 1rem;text-align:center;transition:background .3s}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2rem}
+.stat-row .stat{background:var(--bg2);padding:1.4rem 1rem;text-align:center;transition:background .3s}
 .stat-row .stat:hover{background:var(--panel2)}
-.stat b{display:block;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;color:var(--red);font-variant-numeric:tabular-nums}
-.stat span{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;color:var(--dim);text-transform:uppercase}
+.stat b{display:block;font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:700;color:var(--red);font-variant-numeric:tabular-nums}
+.stat span{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--dim);text-transform:uppercase}
 
 /* ---------- enumeration ---------- */
 .enum-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,4vw,3.5rem);align-items:start}
