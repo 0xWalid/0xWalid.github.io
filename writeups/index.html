@@ -60,7 +60,6 @@
       <div class="container wa-container">
         <p class="mono lab-crumb"><a href="index.html">&larr; all lab notes</a></p>
         <header class="wa-head" id="waHead"></header>
-        <div class="wa-rail" id="waRail" hidden></div>
         <aside class="tldr-box reveal in" id="waTldr">
           <span class="tldr-label mono">TL;DR &mdash; WHAT THIS PROVES ABOUT ME</span>
           <p id="waTldrText"></p>
@@ -163,29 +162,6 @@
         $("#waTldrText").textContent = w.tldr;
         $("#waBody").innerHTML = w.content;
         addCopyButtons($("#waBody"));
-
-        const railEl = document.getElementById("waRail");
-        const mSer = String(w.slug).match(/^ps-(sqli|ssrf)-(\d+)$/);
-        if (railEl) {
-          if (mSer) {
-            const ser = mSer[1];
-            const sibs = sorted.filter(x => new RegExp("^ps-" + ser + "-\\d+$").test(x.slug))
-              .sort((a, b) => a.slug.localeCompare(b.slug));
-            const idx = sibs.findIndex(x => x.slug === w.slug);
-            const prevS = sibs[idx - 1], nextS = sibs[idx + 1];
-            railEl.innerHTML =
-              '<div class="rail-top mono"><span>' + ser.toUpperCase() + ' SERIES</span>' +
-              '<span>LAB ' + String(idx + 1).padStart(2, "0") + ' / ' + sibs.length + '</span></div>' +
-              '<div class="rail-bar"><i style="width:' + Math.round(idx / (sibs.length - 1) * 100) + '%"></i></div>' +
-              '<div class="rail-navs mono">' +
-              (prevS ? '<a href="?p=' + encodeURIComponent(prevS.slug) + '">&larr; prev lab</a>' : "<span></span>") +
-              (nextS ? '<a href="?p=' + encodeURIComponent(nextS.slug) + '">next lab &rarr;</a>' : "<span></span>") +
-              "</div>";
-            railEl.hidden = false;
-          } else {
-            railEl.hidden = true;
-          }
-        }
 
         (function () {
           const set = (sel, val) => {

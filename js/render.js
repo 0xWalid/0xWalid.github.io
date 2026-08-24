@@ -154,13 +154,6 @@
   }
 
 
-  /* now-learning strip */
-  const nowEl = $("#nowLine");
-  if (nowEl && CONFIG.nowLearning) {
-    nowEl.innerHTML = '<span class="dot"></span> now_learning: [' +
-      CONFIG.nowLearning.map(x => esc(x)).join(" \u00b7 ") + "]";
-  }
-
   /* projects */
   const stampCls = { poc: "s-poc", active: "s-active", wip: "s-wip", dep: "s-dep" };
   const featured = (CONFIG.projects || []).find(p => p.featured);
@@ -168,9 +161,10 @@
   if (featSlot && featured) {
     featSlot.innerHTML =
       '<article class="featured reveal" id="featuredCard">' +
+      '<div class="hof-plaque mono">★ FIRST OF ITS NAME — BUILDER&#39;S FAVORITE SINCE v0.1 ★</div>' +
       '<div class="radar"></div><div class="reticle"><i></i><i></i><i></i><i></i></div>' +
       '<div class="featured-inner"><div>' +
-      '<span class="flag-tag mono">★ OPERATOR&#39;S CHOICE // FLAG 000</span>' +
+      '' +
       '<h3 id="featTitle">' + esc(featured.title) + "</h3>" +
       "<p>" + esc(featured.desc) + "</p>" +
       '<div class="feat-term mono" id="featTerm"><span class="ft-line"></span></div>' +

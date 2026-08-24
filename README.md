@@ -108,9 +108,6 @@ by accident.
 - **Lab tracker table** — `CONFIG.labs`: every machine you own, filterable by platform.
 - **Hall of Fame** — `CONFIG.ctfSolvers`: a flag is hidden in three places across the site; solvers email you, you add their name here.
 - **walid-bot** — bottom-right chat bubble answering questions from your config data. Rule-based, offline, no APIs — edit answers in `js/bot.js`.
-- **Now-learning strip** — hero shows `CONFIG.nowLearning` as a live signal. Update one line, done.
-- **[rnd] button** — nav has a dice: throws visitors into a random lab note.
-- **Series rail** — every PortSwigger lab article shows `LAB 07 / 7` progress + prev/next within its series.
 - **Per-article OG images** — each writeup has its own social-share card in `assets/og/`. After adding writeups, regenerate:
 
   ```bash

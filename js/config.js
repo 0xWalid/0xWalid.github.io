@@ -12,14 +12,6 @@ const CONFIG = {
   email: "bu8.official@gmail.com",
   resumeUrl: "Waleed_CV.pdf",
   githubUrl: "https://github.com/0xWalid",
-
-  /* live signal - shown under hero CTAs */
-  nowLearning: [
-    "HackTheBox CPTS - AD module",
-    "PortSwigger SSRF tier",
-    "Artifactory v2 agent design"
-  ],
-
   roles: [
     "penetration tester",
     "cybersecurity engineer",
