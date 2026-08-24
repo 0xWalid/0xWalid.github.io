@@ -153,6 +153,14 @@
       GH_ICON + "<span>View on GitHub</span><i>\u2197</i></a>";
   }
 
+
+  /* now-learning strip */
+  const nowEl = $("#nowLine");
+  if (nowEl && CONFIG.nowLearning) {
+    nowEl.innerHTML = '<span class="dot"></span> now_learning: [' +
+      CONFIG.nowLearning.map(x => esc(x)).join(" \u00b7 ") + "]";
+  }
+
   /* projects */
   const stampCls = { poc: "s-poc", active: "s-active", wip: "s-wip", dep: "s-dep" };
   const featured = (CONFIG.projects || []).find(p => p.featured);
@@ -162,9 +170,10 @@
       '<article class="featured reveal" id="featuredCard">' +
       '<div class="radar"></div><div class="reticle"><i></i><i></i><i></i><i></i></div>' +
       '<div class="featured-inner"><div>' +
-      '<span class="flag-tag mono">PINNED TARGET // FAVOURITE BUILD</span>' +
+      '<span class="flag-tag mono">★ OPERATOR&#39;S CHOICE // FLAG 000</span>' +
       '<h3 id="featTitle">' + esc(featured.title) + "</h3>" +
       "<p>" + esc(featured.desc) + "</p>" +
+      '<div class="feat-term mono" id="featTerm"><span class="ft-line"></span></div>' +
       '<div class="feat-meta">' + (featured.tags || []).map(t => "<span class=\"tag\">" + esc(t) + "</span>").join("") + "</div>" +
       '<div class="proj-links" style="margin-top:1.4rem">' + (featured.links || []).map(l =>
         repoLink(l)).join("") +
@@ -187,6 +196,44 @@
     if (chip) chip.addEventListener("click", capture);
     $("#featuredCard").addEventListener("mouseenter",
       () => scramble($("#featTitle"), featured.title, 500), { once: true });
+
+    const FT_LINES = [
+      { cls: "cmd",   txt: "./artifactory --target lab.local --scope enforced" },
+      { cls: "",       txt: "[*] sovereign blackboard online \u2026 agents ready" },
+      { cls: "out-ok", txt: "[+] surface mapped :: 14 endpoints \u00b7 23 params" },
+      { cls: "out-ok", txt: "[+] owasp vectors fired :: 6 flagged for review" },
+      { cls: "out-red",txt: "[OK] report.compiled \u2192 PoC-ready findings.md" }
+    ];
+    const ftBox = $("#featTerm");
+    let ftStarted = false;
+    const runFt = () => {
+      if (ftStarted || !ftBox) return;
+      ftStarted = true;
+      ftBox.innerHTML = "";
+      let li = 0;
+      (function next() {
+        if (li >= FT_LINES.length) { ftBox.classList.add("done"); return; }
+        const l = FT_LINES[li++];
+        const span = document.createElement("span");
+        span.className = l.cls === "" ? "" : l.cls;
+        if (l.cls === "cmd") span.className = "cmd";
+        ftBox.appendChild(span);
+        ftBox.appendChild(document.createTextNode("\n"));
+        if (reduced || l.cls !== "cmd") {
+          span.textContent = l.txt;
+          setTimeout(next, reduced ? 20 : 340);
+        } else {
+          let ch = 0;
+          (function tick() {
+            span.textContent = l.txt.slice(0, ++ch);
+            if (ch < l.txt.length) setTimeout(tick, 22); else setTimeout(next, 260);
+          })();
+        }
+      })();
+    };
+    new IntersectionObserver((es, obs) => es.forEach(e => {
+      if (e.isIntersecting) { obs.disconnect(); setTimeout(runFt, 600); }
+    }), { threshold: 0.35 }).observe(ftBox);
   }
 
   const grid = $("#projectGrid");

@@ -108,6 +108,14 @@ by accident.
 - **Lab tracker table** — `CONFIG.labs`: every machine you own, filterable by platform.
 - **Hall of Fame** — `CONFIG.ctfSolvers`: a flag is hidden in three places across the site; solvers email you, you add their name here.
 - **walid-bot** — bottom-right chat bubble answering questions from your config data. Rule-based, offline, no APIs — edit answers in `js/bot.js`.
+- **Now-learning strip** — hero shows `CONFIG.nowLearning` as a live signal. Update one line, done.
+- **[rnd] button** — nav has a dice: throws visitors into a random lab note.
+- **Series rail** — every PortSwigger lab article shows `LAB 07 / 7` progress + prev/next within its series.
+- **Per-article OG images** — each writeup has its own social-share card in `assets/og/`. After adding writeups, regenerate:
+
+  ```bash
+  bun install && bun run og    # regenerates all cards from js/writeups.js
+  ```
 
 ## 6 · Feed & sitemap
 
@@ -118,6 +126,14 @@ bun gen.js     # or node gen.js
 ```
 
 Commit both files together with your new writeup.
+
+## 6b · Custom domain (optional but recommended)
+
+1. Buy `0xwalid.dev` (~$12/yr, any registrar).
+2. Repo **Settings → Pages → Custom domain** → enter it → add the DNS records GitHub shows
+   (`A` → 185.199.108.153 etc., or `CNAME` → `0xWalid.github.io`).
+3. Add a file named `CNAME` containing just the domain to this repo root.
+4. Enforce HTTPS once the check passes. Done — `.dev` TLD is HTTPS-enforced by browsers.
 
 ## 7 · Performance & accessibility notes
 

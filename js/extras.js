@@ -127,4 +127,20 @@
     }
   });
 
+  /* random lab button */
+  const rndBtn = $("#rndBtn");
+  if (rndBtn) rndBtn.addEventListener("click", () => {
+    if (typeof WRITEUPS === "undefined") return;
+    const pool = WRITEUPS.filter(w => w.visible !== false && w.slug);
+    const pick = pool[Math.floor(Math.random() * pool.length)];
+    location.href = ROOTP + "writeups/index.html?p=" + encodeURIComponent(pick.slug);
+  });
+
+  /* console egg */
+  try {
+    console.log("%c sudo hire-me %c\n\n curious mind detected. recruiters who read consoles are exactly who this site is for \u2192 check the footer hint. try: ctrl+k",
+      "background:#ff2d55;color:#fff;font-family:monospace;padding:4px 8px;font-weight:bold",
+      "color:#8f8f9a;font-family:monospace");
+  } catch (_) {}
+
 })();

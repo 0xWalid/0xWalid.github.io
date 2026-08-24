@@ -1,0 +1,11 @@
+{
+  "name": "0xwalid-portfolio",
+  "private": true,
+  "scripts": {
+    "gen": "bun gen.js",
+    "og": "bun tools/gen-og.js"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^1"
+  }
+}

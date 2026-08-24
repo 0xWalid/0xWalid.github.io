@@ -6,6 +6,10 @@
   <title>Lab Notes — Waleed · 0xWalid</title>
   <meta name="description" content="Security writeups, lab reports and AI security research by Waleed (0xWalid).">
   <meta name="theme-color" content="#0a0a0c">
+  <meta property="og:title" content="Lab Notes — Waleed · 0xWalid">
+  <meta property="og:description" content="Security writeups, labs and AI security research.">
+  <meta property="og:image" content="../assets/og/site.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,6 +60,7 @@
       <div class="container wa-container">
         <p class="mono lab-crumb"><a href="index.html">&larr; all lab notes</a></p>
         <header class="wa-head" id="waHead"></header>
+        <div class="wa-rail" id="waRail" hidden></div>
         <aside class="tldr-box reveal in" id="waTldr">
           <span class="tldr-label mono">TL;DR &mdash; WHAT THIS PROVES ABOUT ME</span>
           <p id="waTldrText"></p>
@@ -141,7 +146,6 @@
           return;
         }
         const w = sorted[idx];
-        document.title = w.title + " — Lab Notes · " + CONFIG.alias;
         $("#listingView").remove();
         const av = $("#articleView");
         av.hidden = false;
@@ -159,6 +163,44 @@
         $("#waTldrText").textContent = w.tldr;
         $("#waBody").innerHTML = w.content;
         addCopyButtons($("#waBody"));
+
+        const railEl = document.getElementById("waRail");
+        const mSer = String(w.slug).match(/^ps-(sqli|ssrf)-(\d+)$/);
+        if (railEl) {
+          if (mSer) {
+            const ser = mSer[1];
+            const sibs = sorted.filter(x => new RegExp("^ps-" + ser + "-\\d+$").test(x.slug))
+              .sort((a, b) => a.slug.localeCompare(b.slug));
+            const idx = sibs.findIndex(x => x.slug === w.slug);
+            const prevS = sibs[idx - 1], nextS = sibs[idx + 1];
+            railEl.innerHTML =
+              '<div class="rail-top mono"><span>' + ser.toUpperCase() + ' SERIES</span>' +
+              '<span>LAB ' + String(idx + 1).padStart(2, "0") + ' / ' + sibs.length + '</span></div>' +
+              '<div class="rail-bar"><i style="width:' + Math.round(idx / (sibs.length - 1) * 100) + '%"></i></div>' +
+              '<div class="rail-navs mono">' +
+              (prevS ? '<a href="?p=' + encodeURIComponent(prevS.slug) + '">&larr; prev lab</a>' : "<span></span>") +
+              (nextS ? '<a href="?p=' + encodeURIComponent(nextS.slug) + '">next lab &rarr;</a>' : "<span></span>") +
+              "</div>";
+            railEl.hidden = false;
+          } else {
+            railEl.hidden = true;
+          }
+        }
+
+        (function () {
+          const set = (sel, val) => {
+            const el = document.head.querySelector(sel);
+            if (el) el.setAttribute("content", val);
+          };
+          const img = "../assets/og/" + w.slug + ".png";
+          set('meta[property="og:title"]', w.title);
+          set('meta[property="og:description"]', w.tldr);
+          set('meta[property="og:image"]', img);
+          set('meta[name="twitter:title"]', w.title);
+          set('meta[name="twitter:description"]', w.tldr);
+          set('meta[name="twitter:image"]', img);
+          document.title = w.title + " — Lab Notes · " + (window.CONFIG ? CONFIG.alias : "0xWalid");
+        })();
 
         const bar = document.getElementById("waProgress");
         const onScroll = () => {

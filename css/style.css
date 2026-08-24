@@ -670,6 +670,36 @@ body.no-motion .ticker-track{animation:none}
   .featured-inner{grid-template-columns:1fr}
   .flag-chip{justify-self:start}
 }
+/* ---------- operator's choice featured terminal ---------- */
+.feat-term{
+  margin-top:1.3rem;background:#0c0c10;border:1px solid var(--line2);
+  padding:.9rem 1.05rem;font-size:.72rem;line-height:1.75;color:#b9e0d2;
+  min-height:6.4em;white-space:pre-wrap;overflow-x:auto;
+}
+.feat-term.done{border-color:rgba(0,224,127,.35)}
+
+/* ---------- now-learning strip ---------- */
+.now-line{margin-top:1.15rem;font-size:.72rem;color:var(--muted)}
+.now-line .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:.55rem;animation:pulse 2s infinite}
+
+/* ---------- random lab nav btn ---------- */
+.rnd-btn{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--muted);
+  background:none;border:1px solid var(--line2);padding:.42rem .65rem;cursor:pointer;
+  transition:.25s;margin-left:.8rem;
+}
+.rnd-btn:hover{color:var(--red);border-color:var(--red);transform:rotate(-4deg)}
+
+/* ---------- article series rail ---------- */
+.wa-rail{margin-top:2rem;border:1px solid var(--line2);background:var(--panel);padding:1rem 1.25rem}
+.rail-top{display:flex;justify-content:space-between;font-size:.64rem;letter-spacing:.16em;color:var(--dim);margin-bottom:.7rem}
+.rail-top span:first-child{color:var(--red)}
+.rail-bar{height:4px;background:var(--line);position:relative;overflow:hidden;margin-block:.55rem}
+.rail-bar i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#8a1832,var(--red));transition:width .8s var(--ease)}
+.rail-navs{display:flex;justify-content:space-between;margin-top:.8rem}
+.rail-navs a{color:var(--muted);text-decoration:none;font-size:.74rem}
+.rail-navs a:hover{color:var(--red)}
+
 @media(max-width:860px){
   .nav-links{
     position:fixed;inset:0;z-index:111;background:rgba(10,10,12,.97);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
@@ -680,6 +710,7 @@ body.no-motion .ticker-track{animation:none}
   body.menu-open .nav-links{opacity:1;visibility:visible}
   .menu-btn{display:block;z-index:112}
   .kbd-hint{display:none}
+  .rnd-btn{position:absolute;right:76px;top:50%;transform:translateY(-50%)}
   body.menu-open{overflow:hidden}
   .nav-links a{
     font-size:1.2rem;padding:.75rem 1.4rem;
