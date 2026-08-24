@@ -161,7 +161,8 @@
   if (featSlot && featured) {
     featSlot.innerHTML =
       '<article class="featured reveal" id="featuredCard">' +
-      '<div class="hof-plaque mono">★ FIRST OF ITS NAME — BUILDER&#39;S FAVORITE SINCE v0.1 ★</div>' +
+      '<div class="trophy-strip mono"><i class="ts-line"></i><span class="ts-star">\u2605</span>BUILDER\u2019S PICK<span class="ts-star">\u2605</span><i class="ts-line"></i></div>' +
+      '<div class="trophy-seal" aria-hidden="true"><b>\u2605</b><small>EST\u00b7v0.1</small></div>' +
       '<div class="radar"></div><div class="reticle"><i></i><i></i><i></i><i></i></div>' +
       '<div class="featured-inner"><div>' +
       '' +
