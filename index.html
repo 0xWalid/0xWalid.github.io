@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Waleed · 0xWalid — Offensive Security</title>
-  <meta name="description" content="Waleed (0xWalid) — software engineer turned aspiring penetration tester. SOC experience, AI security research, labs and writeups. I break into systems so criminals can't.">
+  <meta name="description" content="Waleed (0xWalid) — security engineer specializing in AI & agent security and security automation. SOC-trained, CPTS-track, builder of autonomous pentesting tooling. I break into systems so criminals can't.">
   <meta property="og:title" content="Waleed · 0xWalid — Offensive Security">
   <meta property="og:description" content="I break into systems so criminals can't. Pentesting, SOC, AI security.">
   <meta property="og:type" content="website">
@@ -21,8 +21,8 @@
     "name": "Waleed",
     "alternateName": "0xWalid",
     "url": "https://0xwalid.github.io/",
-    "jobTitle": "Aspiring Penetration Tester",
-    "description": "Software engineer turned aspiring penetration tester. SOC experience, AI security research, OSCP in progress.",
+    "jobTitle": "Security Engineer — AI & Agent Security",
+    "description": "Security engineer focused on AI and agent security, security automation, and offensive testing. SOC-trained, CPTS-track, OSCP-bound.",
     "knowsAbout": ["Penetration Testing", "Web Security", "SOC Operations", "AI Security", "Python"],
     "sameAs": ["https://github.com/0xWalid"]
   }
@@ -43,7 +43,7 @@
   ├─┤│ │├─┘  ├─┘├┴┐
   ┴ ┴└─┴┴     ┴  ┴ ┴</pre>
     <div class="boot-lines">
-      <p data-delay="0">[ OK ] initialising 0xwalid.dev</p>
+      <p data-delay="0">[ OK ] initialising 0xwalid.github.io</p>
       <p data-delay="1">[ OK ] loading modules :: offensive / defensive / engineering</p>
       <p data-delay="2">[ OK ] establishing uplink ........ connected</p>
       <p data-delay="3" class="boot-grant">[ ACCESS GRANTED ]_</p>
@@ -84,7 +84,7 @@
           <p class="hero-typed mono" aria-hidden="true">&gt; <span id="typedText"></span><span class="type-caret"></span></p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#exploits">explore my work <span aria-hidden="true">&darr;</span></a>
-            <a class="btn btn-ghost" href="#" id="cvBtnTop">download cv</a>
+            <a class="btn btn-ghost" href="Waleed_CV.pdf" id="cvBtnTop" download>download cv</a>
           </div>
         </div>
         <div class="terminal reveal delay-2" role="img" aria-label="Terminal showing Waleed's profile summary">
@@ -112,10 +112,10 @@
             <div class="dossier-photo" aria-hidden="true"><span>W&gt;</span></div>
             <dl class="dossier-fields mono">
               <div><dt>CODENAME</dt><dd id="dAlias">0xWalid</dd></div>
-              <div><dt>ROLE</dt><dd id="dRole">Aspiring Penetration Tester</dd></div>
+              <div><dt>ROLE</dt><dd id="dRole">Security Engineer \u00b7 AI &amp; Agent Security</dd></div>
               <div><dt>BASE</dt><dd id="dBase">Earth &middot; remote-friendly</dd></div>
               <div><dt>CLEARANCE</dt><dd>PUBLIC (for now)</dd></div>
-              <div><dt>STATUS</dt><dd class="ok">SEEKING Jr. PENTEST ROLE</dd></div>
+              <div><dt>STATUS</dt><dd class="ok">OPEN TO AI SECURITY / PENTEST ROLES</dd></div>
             </dl>
           </article>
           <div class="recon-copy reveal delay-1">
@@ -145,7 +145,14 @@
         <div class="enum-grid">
           <div class="terminal scan-term reveal">
             <div class="term-bar"><span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span><span class="term-title mono">nmap &mdash; skill scan</span></div>
-            <pre class="term-body mono" id="nmapTerm"></pre>
+            <pre class="term-body mono" id="nmapTerm"><noscript>
+PORT      STATE  SERVICE         PROOF
+22/tcp    open   linux/bash      daily driver, hardening
+80/tcp    open   web             OWASP Top 10, Burp Suite
+443/tcp   open   soc/blue        Defender, Coro, Wazuh, phishing forensics
+1337/tcp  open   exploit-dev     Python automation, Nmap, SQLmap, ffuf
+5000/tcp  open   ai-security     LLM tooling, agent security, prompt injection
+</noscript></pre>
           </div>
           <div class="skills-wrap" id="skillGroups"></div>
         </div>
@@ -163,7 +170,7 @@
         <div id="featuredSlot"></div>
         <div class="proj-grid" id="projectGrid"></div>
 
-        <p class="more-link mono reveal">&gt; full arsenal on <a href="#" id="ghMoreLink" target="_blank" rel="noopener">github.com/0xWalid</a> &#8599;</p>
+        <p class="more-link mono reveal">&gt; full arsenal on <a href="https://github.com/0xWalid" id="ghMoreLink" target="_blank" rel="noopener">github.com/0xWalid</a> &#8599;</p>
       </div>
     </section>
 
@@ -208,11 +215,12 @@
         </header>
         <div class="pivot-inner">
           <p class="pivot-big reveal">Let's talk.<br><span class="dim">Recruiting? Got a CTF team? Just curious?</span></p>
-          <p class="mono pivot-flavor reveal">$ nc -nv <span id="pivotHost">0xwalid.dev</span> 4444 <span class="ok"># response time: &lt;24h</span></p>
+          <p class="mono pivot-flavor reveal">$ nc -nv <span id="pivotHost">0xwalid.github.io</span> 4444 <span class="ok"># response time: &lt;24h</span></p>
           <div class="pivot-actions reveal">
             <button class="btn btn-primary" id="copyEmail" type="button">copy email address</button>
-            <a class="btn btn-ghost" href="#" id="cvBtnBottom">download cv</a>
+            <a class="btn btn-ghost" href="Waleed_CV.pdf" id="cvBtnBottom" download>download cv</a>
           </div>
+          <p class="mono pivot-email">contact: <a id="emailLink" href="#">loading…</a></p>
           <div class="link-grid" id="linkGrid"></div>
         </div>
       </div>

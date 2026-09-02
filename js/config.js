@@ -6,22 +6,22 @@
 const CONFIG = {
   name: "Waleed",
   alias: "0xWalid",
-  role: "Penetration Tester · Cybersecurity Engineer",
-  base: "Gujrat, Pakistan · remote-friendly",
-  host: "0xwalid.dev",
+  role: "Security Engineer · AI & Agent Security",
+  base: "Gujrat, Pakistan (UTC+5) · flexible hours",
+  host: "0xwalid.github.io",
   email: "bu8.official@gmail.com",
   resumeUrl: "Waleed_CV.pdf",
   githubUrl: "https://github.com/0xWalid",
   roles: [
-    "penetration tester",
-    "cybersecurity engineer",
-    "AI security builder",
-    "SOC-trained defender turned attacker"
+    "security engineer",
+    "AI & agent security",
+    "security automation",
+    "SOC-trained, offense-focused"
   ],
 
   stats: [
-    { n: 5, suffix: "+", label: "security projects" },
-    { n: 3, suffix: "", label: "certs in pipeline" },
+    { n: 6, suffix: "+", label: "tools built" },
+    { n: 2, suffix: "", label: "certs in progress" },
     { n: "auto", label: "lab notes published" },
     { n: 4, suffix: "+", label: "years of engineering study" }
   ],
@@ -76,7 +76,7 @@ const CONFIG = {
       desc: "Deployed and tuned a Wazuh SIEM homelab: aggregated endpoint telemetry, wrote alerting rules, and simulated attack techniques to sharpen real-time intrusion detection.",
       tags: ["Wazuh", "SIEM", "Detection"],
       stamp: "active", stampLabel: "RUNNING",
-      links: [{ label: "writeup soon", url: "#" }]
+      links: [{ label: "notes in labs", url: "#labs" }]
     },
     {
       id: "EXP-003",

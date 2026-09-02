@@ -121,6 +121,7 @@
       ["out-ok", "6 services detected \u00b7 attack surface: expanding"]
     ];
     const runScan = () => {
+      nmap.innerHTML = "";
       let li = 0;
       (function next() {
         if (li >= lines.length) { nmap.classList.add("cursor-block"); return; }
@@ -313,6 +314,13 @@
         (url.startsWith("http") ? ' target="_blank" rel="noopener"' : "") + ">" +
         (ICONS[l.key] || "") + esc(l.label) + "</a>";
     }).join("");
+  }
+
+  /* plain-text email under actions */
+  const emailLink = $("#emailLink");
+  if (emailLink && CONFIG.email) {
+    emailLink.href = "mailto:" + CONFIG.email;
+    emailLink.textContent = CONFIG.email;
   }
 
   /* cv buttons + copy email */

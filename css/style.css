@@ -473,7 +473,10 @@ body.menu-open .menu-btn span:nth-child(2){transform:translateY(-3.5px) rotate(-
 .pivot-inner{text-align:center;padding-block:1rem}
 .pivot-big{font-size:clamp(2.4rem,6.5vw,4.6rem);font-weight:700;line-height:1.05;letter-spacing:-.02em}
 .pivot-flavor{color:var(--dim);font-size:.8rem;margin:1.6rem 0 2rem}
-.pivot-actions{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap;margin-bottom:3rem}
+.pivot-actions{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.pivot-email{font-size:.85rem;color:var(--muted);margin-bottom:3rem;letter-spacing:.03em}
+.pivot-email a{color:var(--text);text-decoration:none;border-bottom:1px dashed var(--red)}
+.pivot-email a:hover{color:var(--red)}
 .link-grid{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap}
 .link-card{
   display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--muted);

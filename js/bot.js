@@ -52,7 +52,7 @@
     [/hello|^hi\b|hey|salam|سلام/, () =>
       "Hey! I'm a tiny rule-based bot living in this site's JavaScript. Ask me about <b>skills</b>, <b>projects</b>, <b>writeups</b>, <b>certs</b> or <b>contact</b>."],
     [/who (are|r) you|about|bio/, () =>
-      "<b>Waleed (0xWalid)</b> — software engineer turned aspiring penetration tester, with real SOC experience and a soft spot for AI security. Currently grinding HackTheBox CPTS on the road to OSCP."],
+      "<b>Waleed (0xWalid)</b> — security engineer focused on <b>AI &amp; agent security</b> and security automation. SOC-trained, CPTS-track, builder of Artifactory — an autonomous pentesting framework."],
     [/skill|stack|tech|know/, () =>
       "Strongest muscles: " + CONFIG.skills.flatMap(g => g.items.slice(0, 2).map(i => i[0])).slice(0, 8).join(", ") + ". Full breakdown lives in the <a href='#enum'>skills section</a>."],
     [/project|built|build|portfolio work/, () => {
