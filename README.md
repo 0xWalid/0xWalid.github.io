@@ -68,33 +68,56 @@ Prose paragraphs (About Me text) live directly in `index.html` inside `<section 
 
 ## 4 · Publish a writeup (the fun part)
 
-Open **[`js/writeups.js`](js/writeups.js)**, copy any existing entry, edit:
+Writeups are **markdown files with frontmatter** in [`content/writeups/`](content/writeups/).
+`js/writeups.js` is generated from them — never edit it by hand.
 
-```js
-{
-  slug: "my-new-writeup",              // becomes writeups/index.html?p=my-new-writeup
-  title: "Machine Name — How I Owned It",
-  platform: "HackTheBox",              // shown as badge + filter chip
-  difficulty: "Medium",                // Easy | Medium | Hard | Insane (colours the pill)
-  category: ["Web", "SQLi"],
-  date: "2026-08-30",
-  minutes: 10,
-  tldr: "One sentence recruiters understand about what this proves.",
-  visible: true,                       // false = unpublish without deleting
-  content: `
-    <p>HTML goes here...</p>
-    <h2>Step 1</h2>
-    <pre class="code" data-lang="bash"><code>nmap -sV target</code></pre>
-    <details class="flag-box">
-      <summary><span class="flag-label">FLAG</span><span class="flag-hint"></span></summary>
-      <code>HTB{...}</code>   <!-- hidden until the reader clicks "reveal" -->
-    </details>`
-}
+Create `content/writeups/NNN-my-slug.md` (the `NNN-` prefix just controls order):
+
+```markdown
+---
+slug: "my-new-writeup"                 # becomes writeups/index.html?p=my-new-writeup
+title: "Machine Name — How I Owned It"
+platform: "HackTheBox"                 # shown as badge + filter chip
+difficulty: "Medium"                   # Easy | Medium | Hard | Insane (colours the pill)
+category: ["Web","SQLi"]
+date: "2026-08-30"
+minutes: 10
+visible: true                          # false = unpublish without deleting
+tldr: "One sentence recruiters understand about what this proves."
+---
+
+Write the body in **plain markdown**. Headings, lists, **bold**, `code` all work.
+
+```bash
+nmap -sV target
 ```
 
-That's it — it appears in the homepage preview (latest 4), the Lab Notes listing,
-and gets its own page with prev/next navigation automatically.
-No build step, no new files needed.
+<details class="flag-box">
+  <summary><span class="flag-label">FLAG</span><span class="flag-hint"></span></summary>
+  <code>HTB{...}</code>
+</details>
+```
+
+Then regenerate everything (writeups data + OG cards + feed/sitemap):
+
+```bash
+node tools/sync.mjs      # or: npm run sync   (also rebuilds OG + feed/sitemap)
+```
+
+Frontmatter values are JSON (quoted strings, `[..]` arrays, bare numbers/booleans).
+Fenced code blocks become the site's `<pre class="code" data-lang="…">` markup with
+copy buttons automatically; raw HTML (like the `flag-box` above) passes through untouched.
+
+**Write freely in a separate repo:** add `source_url: "https://raw.githubusercontent.com/0xWalid/Learnings/main/…​.md"`
+to the frontmatter and `sync` fetches that markdown at build time — so a writeup can live
+in your [Learnings](https://github.com/0xWalid/Learnings) repo and still render here. The
+body below the frontmatter is used as a fallback if the fetch fails.
+
+The 28 migrated legacy entries carry `format: "html"` (their bodies are hand-written HTML,
+emitted verbatim). New writeups omit `format` and author in markdown.
+
+Each writeup appears in the homepage preview (latest 4), the Lab Notes listing, and gets
+its own page with prev/next navigation automatically.
 
 **Spoiler etiquette is built in:** wrap any flag in a `flag-box` and readers
 following along must deliberately click to reveal it — the answer never shows
@@ -105,24 +128,25 @@ by accident.
 - **Ctrl+K command palette** — jump to sections, writeups and actions (also the `ctrl k` chip next to the logo).
 - **Print = instant CV** — `Ctrl+P` on any page produces a clean one-pager (print stylesheet, zero maintenance).
 - **`sudo hire-me`** — a hidden egg: type it anywhere on the homepage… see what happens.
-- **Lab tracker table** — `CONFIG.labs`: every machine you own, filterable by platform.
-- **Hall of Fame** — `CONFIG.ctfSolvers`: a flag is hidden in three places across the site; solvers email you, you add their name here.
+- **Hall of Fame** — `CONFIG.ctfSolvers`: a flag is split into **three base64 pieces** hidden in three spots (robots.txt · homepage source comment · browser console). Readers concatenate + base64-decode and email you the result; add solver names here.
 - **walid-bot** — bottom-right chat bubble answering questions from your config data. Rule-based, offline, no APIs — edit answers in `js/bot.js`.
-- **Per-article OG images** — each writeup has its own social-share card in `assets/og/`. After adding writeups, regenerate:
+- **Per-article OG images** — each writeup has its own social-share card in `assets/og/`.
+  `npm run sync` regenerates them; to rebuild cards only:
 
   ```bash
-  bun install && bun run og    # regenerates all cards from js/writeups.js
+  npm install && npm run og    # regenerates all cards from js/writeups.js
   ```
 
 ## 6 · Feed & sitemap
 
-After adding writeups, regenerate the RSS feed and sitemap:
+`npm run sync` already rebuilds `feed.xml` + `sitemap.xml`. To regenerate them alone:
 
 ```bash
-bun gen.js     # or node gen.js
+node gen.js      # or: npm run gen
 ```
 
-Commit both files together with your new writeup.
+Commit the generated files (`js/writeups.js`, `feed.xml`, `sitemap.xml`, `assets/og/`)
+together with the markdown you added in `content/writeups/`.
 
 ## 6b · Custom domain (optional but recommended)
 
@@ -134,7 +158,9 @@ Commit both files together with your new writeup.
 
 ## 7 · Performance & accessibility notes
 
-- No frameworks, no trackers. Canvas pauses when hidden/offscreen; honors `prefers-reduced-motion`.
+- No frameworks, no third-party CDNs, no trackers. **Fonts are self-hosted** (`assets/fonts/`, latin-subset woff2) so no request ever leaves your domain for styling. Regenerate app icons from the favicon with `npm run icons`.
+- Optional analytics: a **cookieless GoatCounter** snippet is wired into both pages — replace the `0xwalid` code with your own after signing up free at [goatcounter.com](https://www.goatcounter.com/). Remove the two `<script data-goatcounter…>` lines to opt out entirely.
+- Canvas pauses when hidden/offscreen; honors `prefers-reduced-motion`.
 - Semantic HTML, skip-link, keyboard menu, focus-visible styles, spoiler-safe flags by default.
 
 ## 8 · Structure
@@ -144,16 +170,24 @@ website/
 ├── index.html            main one-page site
 ├── writeups/index.html   listing + article viewer (?p=slug)
 ├── 404.html              themed error page
+├── now.html              /now + /uses page (from CONFIG.now)
 ├── robots.txt            crawler rules (+ a hint for humans)
 ├── sitemap.xml / feed.xml  generated by gen.js
 ├── .well-known/security.txt  RFC 9116 security contact
-├── assets/               favicon.svg · og.png (social share banner)
+├── site.webmanifest       PWA manifest (icons, theme)
+├── content/writeups/     ← markdown source of truth for writeups (edit me)
+├── assets/               favicon.svg · app icons (png) · og.png · fonts/ (self-hosted woff2)
 ├── css/
+│   ├── fonts.css         @font-face for self-hosted fonts
 │   ├── style.css         design system (+ print CV styles)
 │   └── writeups.css      article pages only
+├── tools/
+│   ├── sync.mjs          content/writeups/*.md → js/writeups.js
+│   ├── gen-og.js         regenerates per-writeup OG cards
+│   └── gen-icons.js      regenerates app icons from favicon design
 └── js/
     ├── config.js         ← ALL your content (edit me)
-    ├── writeups.js       ← ALL your writeups + labs data (edit me)
+    ├── writeups.js       generated by tools/sync.mjs — do not edit
     ├── main.js           core UX engine
     ├── render.js         renders config into sections
     ├── extras.js         palette, eggs, toggles

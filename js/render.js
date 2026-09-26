@@ -114,7 +114,7 @@
       ["out-dim", "PORT      STATE  SERVICE         PROOF"],
       ["out",    "22/tcp    open   linux/bash      daily driver \u00b7 hardening"],
       ["out",    "80/tcp    open   web             OWASP Top 10 \u00b7 burp"],
-      ["out",    "443/tcp   open   soc/blue        splunk \u00b7 IR triage"],
+      ["out",    "443/tcp   open   soc/blue        defender \u00b7 wazuh \u00b7 IR triage"],
       ["out",    "1337/tcp  open   exploit-dev     python \u00b7 custom tooling"],
       ["out",    "5000/tcp  open   ai-security     prompt injection research"],
       ["out-dim", ""],

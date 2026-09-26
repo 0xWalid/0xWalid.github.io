@@ -20,6 +20,7 @@
       }})) : []),
     { label: "Copy email address", hint: "action", run: () => $("#copyEmail").click() },
     { label: "Download CV", hint: "action", run: () => window.open(CONFIG.resumeUrl || "_blank") },
+    { label: "Now & Uses", hint: "page", run: () => location.href = ROOTP + "now.html" },
     { label: "Open GitHub", hint: "link", run: () => window.open(CONFIG.githubUrl) },
     { label: "RSS feed", hint: "link", run: () => location.href = ROOTP + "feed.xml" },
     { label: "Toggle phosphor ghost mode", hint: "egg", run: () => {
@@ -131,6 +132,9 @@
   try {
     console.log("%c sudo hire-me %c\n\n curious mind detected. recruiters who read consoles are exactly who this site is for \u2192 check the footer hint. try: ctrl+k",
       "background:#ff2d55;color:#fff;font-family:monospace;padding:4px 8px;font-weight:bold",
+      "color:#8f8f9a;font-family:monospace");
+    console.log("%c[ctf] piece 3 of 3 (base64) :: XzBmZn0=%c  \u2014 you found all three? concatenate + base64-decode, then email me.",
+      "color:#00e07f;font-family:monospace;font-weight:bold",
       "color:#8f8f9a;font-family:monospace");
   } catch (_) {}
 

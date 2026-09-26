@@ -18,6 +18,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${BASE}/</loc></url>
   <url><loc>${BASE}/writeups/</loc></url>
+  <url><loc>${BASE}/now.html</loc></url>
 ${visible.map(w =>
   `  <url><loc>${BASE}/writeups/index.html?p=${encodeURIComponent(w.slug)}</loc><lastmod>${w.date}</lastmod></url>`
 ).join("\n")}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Now &amp; Uses — Waleed · 0xWalid</title>
+  <meta name="description" content="What Waleed (0xWalid) is focused on and learning right now, and the tools & setup he runs.">
+  <meta name="theme-color" content="#0a0a0c">
+  <meta property="og:title" content="Now &amp; Uses — Waleed · 0xWalid">
+  <meta property="og:description" content="Current focus, what I'm learning, and the tools I run.">
+  <meta property="og:image" content="https://0xwalid.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://0xwalid.github.io/now.html">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">skip to content</a>
+  <header class="nav scrolled" id="siteNav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">~/<span>0xWalid</span><span class="caret">_</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#recon"><i>01</i>about</a>
+        <a href="index.html#enum"><i>02</i>skills</a>
+        <a href="index.html#exploits"><i>03</i>projects</a>
+        <a href="index.html#labs"><i>04</i>writeups</a>
+        <a href="index.html#privesc"><i>05</i>certs</a>
+        <a href="index.html#pivot" class="nav-cta"><i>06</i>contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <p class="mono lab-crumb"><a href="index.html">~/0xWalid</a> / now</p>
+        <header class="sec-head">
+          <span class="sec-index mono">// NOW</span>
+          <h2>What I'm doing right now</h2>
+        </header>
+        <p class="labs-intro">A <a href="https://nownownow.com/about" target="_blank" rel="noopener">/now page</a> — a snapshot of my current focus, kept honest. <span class="mono dim" id="nowUpdated"></span></p>
+        <div class="now-focus" id="nowFocus"></div>
+
+        <header class="sec-head" style="margin-top:3rem">
+          <span class="sec-index mono">// LEARNING</span>
+          <h2>On the workbench</h2>
+        </header>
+        <ul class="chips" id="nowLearning"></ul>
+
+        <header class="sec-head" style="margin-top:3rem">
+          <span class="sec-index mono">// USES</span>
+          <h2>Tools &amp; setup I run</h2>
+        </header>
+        <div class="uses-grid" id="nowUses"></div>
+
+        <p class="more-link mono" style="margin-top:2.5rem">&gt; <a href="index.html">back to the main site</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="mono foot-line">$ echo "designed &amp; built by Waleed &mdash; no frameworks, no trackers, pure craft"</p>
+      <p class="mono">&copy; <span id="year"></span> Waleed &middot; 0xWalid</p>
+    </div>
+  </footer>
+
+  <div id="paletteHost"></div>
+  <div id="toast" class="toast mono" role="status" aria-live="polite"></div>
+
+  <style>
+    .now-focus{display:grid;gap:.9rem;margin-top:1.4rem}
+    .now-focus .nf{display:flex;gap:.9rem;align-items:flex-start;border-left:2px solid var(--red);
+      padding:.7rem 1rem;background:rgba(255,255,255,.02)}
+    .now-focus .nf b{color:var(--red);font-family:var(--mono);font-size:.8rem;flex:none;padding-top:.15rem}
+    .uses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:1.4rem}
+    .uses-grid .uc{border:1px solid var(--line);padding:1.2rem 1.3rem}
+    .uses-grid .uc h3{font-family:var(--mono);font-size:.78rem;color:var(--red);margin-bottom:.8rem;letter-spacing:.08em}
+    .uses-grid .uc ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
+    .uses-grid .uc li{font-family:var(--mono);font-size:.78rem;color:var(--muted);
+      border:1px solid var(--line);padding:.3rem .6rem;border-radius:3px}
+  </style>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/extras.js"></script>
+  <script>
+    (() => {
+      const { $, esc } = window.APP;
+      const now = (window.CONFIG && CONFIG.now) || {};
+      const up = $("#nowUpdated");
+      if (up && now.updated) up.textContent = "// last updated " + now.updated;
+      const focus = $("#nowFocus");
+      if (focus) focus.innerHTML = (now.focus || []).map((f, i) =>
+        '<div class="nf"><b>' + String(i + 1).padStart(2, "0") + '</b><span>' + esc(f) + "</span></div>").join("");
+      const learn = $("#nowLearning");
+      if (learn) learn.innerHTML = (now.learning || []).map(l => "<li>" + esc(l) + "</li>").join("");
+      const uses = $("#nowUses");
+      if (uses) uses.innerHTML = (now.uses || []).map(u =>
+        '<div class="uc"><h3>// ' + esc(u.group) + "</h3><ul>" +
+        (u.items || []).map(it => "<li>" + esc(it) + "</li>").join("") + "</ul></div>").join("");
+    })();
+  </script>
+
+  <!-- privacy-friendly, cookieless analytics (GoatCounter). Replace 0xwalid with your own code after signing up free at goatcounter.com -->
+  <script data-goatcounter="https://0xwalid.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

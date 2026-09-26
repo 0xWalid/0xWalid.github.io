@@ -2,10 +2,13 @@
   "name": "0xwalid-portfolio",
   "private": true,
   "scripts": {
-    "gen": "bun gen.js",
-    "og": "bun tools/gen-og.js"
+    "sync": "node tools/sync.mjs && node tools/gen-og.js && node gen.js",
+    "gen": "node gen.js",
+    "og": "node tools/gen-og.js",
+    "icons": "node tools/gen-icons.js"
   },
   "devDependencies": {
-    "@napi-rs/canvas": "^1"
+    "@napi-rs/canvas": "^1.0.9",
+    "marked": "^18.0.14"
   }
 }

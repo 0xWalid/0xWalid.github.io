@@ -70,7 +70,7 @@
       "Fastest path: <b>" + CONFIG.email + "</b> (copy button in the <a href='#pivot'>pivot section</a>). LinkedIn + GitHub links live there too. Response time &lt; 24h."],
     [/cv|resume/, () => "Hit any <b>download cv</b> button — or just press Ctrl+P on this site; it prints a clean one-pager by design."],
     [/flag|secret|ctf|hidden|easter/, () =>
-      "There IS a flag hidden on this site… three pieces, actually. Crawlers read comments. No further comment 🙃".replace(" 🙃", "")],
+      "There IS a flag hidden on this site — three base64 pieces in three spots. Start at robots.txt, read the homepage source, then check the browser console. Concatenate, base64-decode, email me. No further comment."],
     [/thank|thanks|cool|nice|awesome/, () => "Happy to help. Now go break something (legally)."]
   ];
 
