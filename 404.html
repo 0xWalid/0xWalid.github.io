@@ -3,40 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 — Connection Refused</title>
+  <title>404 — Signal Lost</title>
+  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#0a0a0c">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/fonts.css">
   <style>
-    :root{--bg:#0a0a0c;--line:#212129;--text:#eceae6;--muted:#8f8f9a;--red:#ff2d55;
+    :root{--bg:#0a0a0c;--line:#212129;--text:#eceae6;--muted:#8f8f9a;--red:#ff2d55;--grn:#00e07f;
       --mono:'JetBrains Mono',monospace;--sans:'Space Grotesk',sans-serif}
     *{margin:0;padding:0;box-sizing:border-box}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100svh;
-      display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
-    .wrap{max-width:560px}
-    .code{font-family:var(--mono);font-size:clamp(3rem,12vw,7rem);font-weight:700;color:var(--red);
-      text-shadow:0 0 40px rgba(255,45,85,.35)}
-    pre{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-align:left;
-      border:1px solid var(--line);padding:1.2rem;margin:1.6rem 0;line-height:1.8;overflow-x:auto}
-    .ok{color:#00e07f}
-    a{display:inline-block;font-family:var(--mono);font-size:.82rem;color:var(--text);
-      text-decoration:none;border:1px solid var(--red);padding:.85rem 1.6rem;transition:.25s}
-    a:hover{background:rgba(255,45,85,.14)}
-    p{color:var(--muted)}
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;overflow:hidden}
+    /* scanline + flicker overlay */
+    body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9;
+      background:repeating-linear-gradient(0deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.28) 3px,rgba(0,0,0,0) 4px);
+      mix-blend-mode:overlay;animation:flick 4s steps(60) infinite}
+    @keyframes flick{0%,100%{opacity:.55}50%{opacity:.75}}
+    .wrap{max-width:600px;position:relative;z-index:1}
+    /* glitchy 404 */
+    .glitch{font-family:var(--mono);font-weight:700;line-height:1;position:relative;
+      font-size:clamp(4rem,20vw,10rem);color:var(--text);letter-spacing:.04em}
+    .glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;overflow:hidden}
+    .glitch::before{color:var(--red);animation:gl1 2.6s infinite linear alternate-reverse;transform:translateX(-2px)}
+    .glitch::after{color:#00b3ff;animation:gl2 3.4s infinite linear alternate-reverse;transform:translateX(2px)}
+    @keyframes gl1{0%{clip-path:inset(8% 0 82% 0)}20%{clip-path:inset(48% 0 30% 0)}40%{clip-path:inset(74% 0 6% 0)}
+      60%{clip-path:inset(20% 0 60% 0)}80%{clip-path:inset(60% 0 20% 0)}100%{clip-path:inset(34% 0 44% 0)}}
+    @keyframes gl2{0%{clip-path:inset(70% 0 12% 0)}25%{clip-path:inset(14% 0 66% 0)}50%{clip-path:inset(52% 0 28% 0)}
+      75%{clip-path:inset(30% 0 54% 0)}100%{clip-path:inset(6% 0 80% 0)}}
+    .siglost{font-family:var(--mono);font-size:clamp(.8rem,3.5vw,1.15rem);letter-spacing:.5em;
+      color:var(--red);margin:.4rem 0 1.8rem;text-transform:uppercase;text-shadow:0 0 18px rgba(255,45,85,.5)}
+    .decrypt{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:left;
+      border:1px solid var(--line);background:rgba(255,255,255,.02);padding:1.1rem 1.3rem;margin:0 auto 1.8rem;
+      max-width:440px;line-height:2}
+    .decrypt .prog{color:var(--grn);white-space:pre}
+    .decrypt .done{color:var(--grn)}
+    a.home{display:inline-block;font-family:var(--mono);font-size:.82rem;color:var(--text);text-decoration:none;
+      border:1px solid var(--red);padding:.85rem 1.7rem;transition:.25s;opacity:0;transform:translateY(6px)}
+    a.home.show{opacity:1;transform:none}
+    a.home:hover{background:rgba(255,45,85,.14);box-shadow:0 0 24px rgba(255,45,85,.25)}
+    p.sub{color:var(--muted);font-size:.9rem;margin-bottom:1.6rem}
+    @media (prefers-reduced-motion:reduce){
+      .glitch::before,.glitch::after{animation:none}
+      body::after{animation:none;opacity:.4}
+      a.home{opacity:1;transform:none}
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="code">404</div>
-    <pre>$ curl -I https://0xwalid.dev/this-page
-<span class="ok">HTTP/2 200</span> ...just kidding.
-HTTP/2 <b style="color:var(--red)">404</b> — target not found
-exploitation attempt logged ;)</pre>
-    <p>This resource doesn't exist — but the rest of the perimeter is worth a scan.</p>
-    <br>
-    <a href="/">&larr; return to base</a>
+    <div class="glitch" data-text="404">404</div>
+    <div class="siglost">signal&nbsp;lost</div>
+    <p class="sub">Requested resource dropped off the perimeter. Attempting to re-route&hellip;</p>
+    <div class="decrypt" aria-live="polite">
+      <div>$ traceroute <span id="path">/&#8203;requested&#8203;/&#8203;resource</span></div>
+      <div class="prog" id="bar">> [----------]&nbsp;&nbsp;0%</div>
+      <div id="result"></div>
+    </div>
+    <a class="home" id="home" href="/">&larr; path.restored &middot; return to base</a>
   </div>
+
+  <script>
+    (() => {
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const bar = document.getElementById("bar");
+      const result = document.getElementById("result");
+      const home = document.getElementById("home");
+      const reveal = () => {
+        bar.innerHTML = "> [==========] 100%";
+        result.innerHTML = '<span class="done">> route recovered &rarr; / &nbsp;[ 1 hop, way home ]</span>';
+        home.classList.add("show");
+      };
+      if (reduced) { reveal(); return; }
+      let pct = 0;
+      const tick = () => {
+        pct += Math.random() * 18 + 6;
+        if (pct >= 100) { reveal(); return; }
+        const filled = Math.round(pct / 10);
+        bar.innerHTML = "> [" + "=".repeat(filled) + "-".repeat(10 - filled) + "] " +
+          String(Math.round(pct)).padStart(2, " ") + "%";
+        setTimeout(tick, 180 + Math.random() * 220);
+      };
+      setTimeout(tick, 500);
+    })();
+  </script>
 </body>
 </html>

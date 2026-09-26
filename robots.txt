@@ -1,5 +1,7 @@
 # welcome, curious crawler
-# hint for humans: real ones read comments. piece 1 of 3: ZM9VTQ
+# hint for humans: real ones read comments. the flag is in 3 base64 pieces.
+# ctf // piece 1 of 3 (base64) :: RkxBR3tyM2
+# (piece 2 hides in the homepage source · piece 3 waits in the browser console)
 User-agent: *
 Allow: /
 

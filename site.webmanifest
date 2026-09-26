@@ -1,0 +1,16 @@
+{
+  "name": "Waleed · 0xWalid — Offensive Security",
+  "short_name": "0xWalid",
+  "description": "Security engineer — AI & agent security, offensive testing, security automation.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0c",
+  "theme_color": "#0a0a0c",
+  "icons": [
+    { "src": "assets/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "assets/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "assets/icon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "assets/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+  ]
+}

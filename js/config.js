@@ -9,7 +9,7 @@ const CONFIG = {
   role: "Security Engineer · AI & Agent Security",
   base: "Gujrat, Pakistan (UTC+5) · flexible hours",
   host: "0xwalid.github.io",
-  email: "bu8.official@gmail.com",
+  email: "thewalidahmed@gmail.com",
   resumeUrl: "Waleed_CV.pdf",
   githubUrl: "https://github.com/0xWalid",
   roles: [
@@ -129,5 +129,27 @@ const CONFIG = {
     { key: "htb",      label: "HackTheBox", url: "#",                                         visible: false },
     { key: "thm",      label: "TryHackMe",  url: "#",                                         visible: false },
     { key: "x",        label: "X / Twitter", url: "#",                                        visible: false }
-  ]
+  ],
+
+  /* /now + /uses page — edit freely; the page renders straight from here */
+  now: {
+    updated: "2026-09-27",
+    focus: [
+      "Grinding HackTheBox CPTS — full methodology, one module at a time.",
+      "Building Artifactory, my autonomous AI-driven pentesting framework.",
+      "Prompt-injection & agent-security research feeding back into Artifactory."
+    ],
+    learning: [
+      "HackTheBox CPTS (Practitioner track) — ~60% through",
+      "OSCP prep — reading, buffer-overflow refreshers, box grind",
+      "LLM red-teaming: indirect injection, tool-abuse, exfil channels",
+      "PicoCTF web & API logic-flaw challenges"
+    ],
+    uses: [
+      { group: "OFFENSIVE", items: ["Burp Suite", "Nmap", "SQLmap", "ffuf", "Metasploit", "custom Python tooling"] },
+      { group: "DEFENSIVE / SOC", items: ["Microsoft Defender", "Coro", "Wazuh SIEM", "email-header forensics"] },
+      { group: "AI SECURITY", items: ["opencode", "LLM APIs", "Artifactory (SBA)", "prompt-injection harnesses"] },
+      { group: "ENVIRONMENT", items: ["Linux + bash", "VS Code / Neovim", "Git", "Kali / homelab VMs"] }
+    ]
+  }
 };

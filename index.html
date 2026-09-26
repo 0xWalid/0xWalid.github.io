@@ -13,6 +13,10 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Waleed · 0xWalid — Offensive Security">
+  <meta name="twitter:description" content="I break into systems so criminals can't. Pentesting, SOC, AI security.">
+  <meta name="twitter:image" content="https://0xwalid.github.io/assets/og.png">
+  <link rel="canonical" href="https://0xwalid.github.io/">
   <link rel="alternate" type="application/rss+xml" title="Lab Notes RSS" href="feed.xml">
   <script type="application/ld+json">
   {
@@ -29,13 +33,16 @@
   </script>
   <meta name="theme-color" content="#0a0a0c">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/space-grotesk-400.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-400.woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
   <noscript><style>#boot{display:none}.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
+  <!-- nice, you read the source. ctf // piece 2 of 3 (base64) :: Nvbl9wNHlz -->
   <a class="skip-link" href="#main">skip to content</a>
 
   <div id="boot" aria-hidden="true">
@@ -199,8 +206,8 @@ PORT      STATE  SERVICE         PROOF
 
         <div class="ctf-card reveal" id="ctfCard">
           <p class="mono ctf-tag">// SITE CTF // HALL OF FAME</p>
-          <p class="ctf-copy">A flag is hidden somewhere on this site — three pieces, three hiding spots.
-          Reassemble it and email me the result to earn your place below. <span class="dim mono">(hint: crawlers welcome)</span></p>
+          <p class="ctf-copy">A flag is hidden across this site in <strong>three base64 pieces</strong>, each in a different hiding spot — one for crawlers, one for source-readers, one for the console.
+          Concatenate all three, base64-decode, and email me the result to earn your place below. <span class="dim mono">(hint: start with robots.txt)</span></p>
           <ol class="hof mono" id="hofList"></ol>
         </div>
       </div>
@@ -231,7 +238,7 @@ PORT      STATE  SERVICE         PROOF
     <div class="container footer-inner">
       <p class="mono foot-line">$ echo "designed &amp; built by Waleed &mdash; no frameworks, no trackers, pure craft"</p>
       <p class="mono foot-hint" title="a secret for the dedicated">&uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr;BA</p>
-      <p class="mono">&copy; <span id="year"></span> Waleed &middot; 0xWalid</p>
+      <p class="mono">&copy; <span id="year"></span> Waleed &middot; 0xWalid &middot; <a href="now.html">/now</a></p>
     </div>
   </footer>
 
@@ -245,5 +252,8 @@ PORT      STATE  SERVICE         PROOF
   <script src="js/render.js"></script>
   <script src="js/extras.js"></script>
   <script src="js/bot.js"></script>
+
+  <!-- privacy-friendly, cookieless analytics (GoatCounter). Replace 0xwalid with your own code after signing up free at goatcounter.com -->
+  <script data-goatcounter="https://0xwalid.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
